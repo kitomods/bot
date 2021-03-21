@@ -572,13 +572,16 @@ async function starts() {
                                         reply('https://chat.whatsapp.com/'+linkgc)
                                         break
                                 case 'leave':
-                                        if (!isGroup) return reply(mess.only.group)
-                                        if (!isOwner) return reply(mess.only.ownerB)
-                                            client.groupLeave(from)
-                                        } else {
-                                            reply(mess.only.admin)
-                                        }
-                                        break
+                    if (!isGroup) return reply(mess.only.group)
+                    if (!isGroupAdmins) return reply(mess.only.admin)
+                     setTimeout( () => {
+					client.groupLeave (from) 
+					}, 2000)
+                     setTimeout( () => {
+					client.updatePresence(from, Presence.composing) 
+					client.sendMessage(from, 'tchau filhos da puta ', text) // ur cods
+					}, 0)
+                     break
 				case 'toimg':
 					if (!isQuotedSticker) return reply('marque uma figurinha ')
 					reply(mess.wait)
