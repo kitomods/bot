@@ -577,7 +577,7 @@ async function starts() {
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return reply('Tag target yang ingin di tendang!')
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					if (mentioned.length > 1) {
-						teks = 'Perintah di terima, mengeluarkan :\n'
+						teks = 'tiramos essa putinha kkkkkkk :\n'
 						for (let _ of mentioned) {
 							teks += `@${_.split('@')[0]}\n`
 						}
@@ -590,7 +590,7 @@ async function starts() {
 					break
 				case 'listadmins':
 					if (!isGroup) return reply(mess.only.group)
-					teks = `List admin of group *${groupMetadata.subject}*\nTotal : ${groupAdmins.length}\n\n`
+					teks = `lista dos gostosos dos adm  *${groupMetadata.subject}*\nTotal : ${groupAdmins.length}\n\n`
 					no = 0
 					for (let admon of groupAdmins) {
 						no += 1
@@ -607,7 +607,7 @@ async function starts() {
                                         break
                                 case 'leave':
                                         if (!isGroup) return reply(mess.only.group)
-                                        if (isGroupAdmins || isOwner) {
+                                        if (!isOwner) return reply(mess.only.ownerB)
                                             client.groupLeave(from)
                                         } else {
                                             reply(mess.only.admin)
