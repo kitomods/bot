@@ -1,12 +1,15 @@
 const help = (prefix) => {
 	return `
- 
+                           𝐑𝐔𝐃𝐄-𝚩𝐎𝐓
+𝐂𝐑𝐈𝐀𝐃𝐎𝐑= 𝐊𝐈𝐓𝐎
+𝐂𝐓𝐓=wa.me/552173786669
+
+                                       𝐌𝐄𝑵𝐔
+◤◢◣◥◤◢◣◥◤◢◣◥ ◤◢◣◥◤◢◣◥◤◢◣◥ ◤◢◣◥◤◢◣
 ${prefix}fig
 ${prefix}toimg
 ${prefix}meme
->Others Commands<
 ${prefix}ytmp3
-${prefix}tahta
 ${prefix}gtts
 ${prefix}loli
 ${prefix}nsfwloli
@@ -17,7 +20,6 @@ ${prefix}wait
 ${prefix}prefixo
 ${prefix}limpar
 ${prefix}transmissao
->Group Comands<
 ${prefix}add
 ${prefix}kick
 ${prefix}promote
@@ -26,6 +28,7 @@ ${prefix}linkgroup
 ${prefix}leave
 ${prefix}marcar
 ${prefix}simih
+◤◢◣◥◤◢◣◥◤◢◣◥ ◤◢◣◥◤◢◣◥◤◢◣◥ ◤◢◣◥◤◢◣
 `
 }
 
