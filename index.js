@@ -597,7 +597,7 @@ async function starts() {
 					})
 					break
 				case 'simi':
-					if (args.length < 1) return reply('cade o texto?)
+					if (args.length < 1) return reply('cade o texto?')
 					teks = body.slice(5)
 					anu = await simih(teks) //fetchJson(`https://mhankbarbars.herokuapp.com/api/samisami?text=${teks}`, {method: 'get'})
 					//if (anu.error) return reply('Simi ga tau kak')
