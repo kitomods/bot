@@ -121,11 +121,11 @@ async function starts() {
 					Iv: '❌ Link tidak valid ❌'
 				},
 				only: {
-					group: '❌ Perintah ini hanya bisa di gunakan dalam group! ❌',
-					ownerG: '❌ Perintah ini hanya bisa di gunakan oleh owner group! ❌',
-					ownerB: '❌ Perintah ini hanya bisa di gunakan oleh owner bot! ❌',
-					admin: '❌ Perintah ini hanya bisa di gunakan oleh admin group! ❌',
-					Badmin: '❌ Perintah ini hanya bisa di gunakan ketika bot menjadi admin! ❌'
+					group: 'o garai isso aí só funfa em grupo',
+					ownerG: 'so o dono do grupo faz isso ai',
+					ownerB: 'isso ai aquele gostoso do kito faz kakakakakak',
+					admin: 'o membro comum desgraçado, só adm faz esse carai lkkkkk',
+					Badmin: 'só quando eu me torna adm faço saporra kkkkkkkk'
 				}
 			}
 
