@@ -114,11 +114,11 @@ async function starts() {
 			const isCmd = body.startsWith(prefix)
 
 			mess = {
-				wait: '⌛ Sedang di Prosess ⌛',
-				success: '✔️ Berhasil ✔️',
+				wait: 'ta fazendo garai espera kkk',
+				success: 'só sucesso 😎🤙',
 				error: {
-					stick: '❌ Gagal, terjadi kesalahan saat mengkonversi gambar ke sticker ❌',
-					Iv: '❌ Link tidak valid ❌'
+					stick: 'n consegui fazer essa porra desculpa 😔',
+					Iv: ' Link inválido 🙄💅'
 				},
 				only: {
 					group: 'o garai isso aí só funfa em grupo',
