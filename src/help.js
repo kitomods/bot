@@ -1,9 +1,10 @@
 const help = (prefix) => {
-	return `>Sticker Commands <
+	return `
+>Sticker Commands <
 ${prefix}sticker
 ${prefix}toimg
 ${prefix}meme
-> *Others Commands* <
+>Others Commands<
  ${prefix}tp
 ${prefix}ep
 ${prefix}tahta
@@ -15,7 +16,7 @@ ${prefix}simi
 ${prefix}ocr
 ${prefix}wait
 ${prefix}setprefix
-> *Group Comands* <
+>Group Comands<
 ${prefix}add
 ${prefix}kick
 ${prefix}promote
