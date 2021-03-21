@@ -1,6 +1,6 @@
 const help = (prefix) => {
 	return `
->Sticker Commands <
+ 
 ${prefix}fig
 ${prefix}toimg
 ${prefix}meme
