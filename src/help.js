@@ -1,12 +1,11 @@
 const help = (prefix) => {
 	return `
 >Sticker Commands <
-${prefix}sticker
+${prefix}fig
 ${prefix}toimg
 ${prefix}meme
 >Others Commands<
- ${prefix}tp
-${prefix}ep
+${prefix}ytmp3
 ${prefix}tahta
 ${prefix}gtts
 ${prefix}loli
@@ -15,7 +14,9 @@ ${prefix}url2img
 ${prefix}simi
 ${prefix}ocr
 ${prefix}wait
-${prefix}setprefix
+${prefix}prefixo
+${prefix}limpar
+${prefix}transmissao
 >Group Comands<
 ${prefix}add
 ${prefix}kick
@@ -23,7 +24,7 @@ ${prefix}promote
 ${prefix}demote
 ${prefix}linkgroup
 ${prefix}leave
-${prefix}tagall
+${prefix}marcar
 ${prefix}simih
 `
 }
