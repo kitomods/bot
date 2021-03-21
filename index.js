@@ -351,7 +351,7 @@ async function starts() {
 							.toFormat('webp')
 							.save(ran)*/
 					} else {
-						reply(`Kirim gambar dengan caption ${prefix}sticker atau tag gambar yang sudah dikirim`)
+						reply(`manda imagem ou gif com a legenda ${prefix}fig`)
 					}
 					break
 				case 'gtts':
@@ -361,7 +361,7 @@ async function starts() {
 					dtt = body.slice(9)
 					ranm = getRandom('.mp3')
 					dtt.length > 600
-					? reply('Textnya kebanyakan om')
+					? reply('texto � mto grande')
 					: gtts.save(ranm, dtt, function() {
 						client.sendMessage(from, fs.readFileSync(ranm), audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
 						fs.unlinkSync(ranm)
@@ -377,11 +377,11 @@ async function starts() {
 					buffer = await getBuffer(`https://imgur.com/${memein.hash}.jpg`)
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: '.......'})
 					break*/
-				case 'setprefix':
+				case 'prefixo':
 					if (args.length < 1) return
 					if (!isOwner) return reply(mess.only.ownerB)
 					prefix = args[0]
-					reply(`Prefix berhasil di ubah menjadi : ${prefix}`)
+					reply(`kitinho o prefix j� foi alterado com sucesso : ${prefix}`)
 					break
 				/*case 'loli':
 					loli.getSFWLoli(async (err, res) => {
@@ -493,17 +493,17 @@ async function starts() {
 					}
 					client.sendMessage(from, teks, text, {detectLinks: false, quoted: mek})
 					break
-				case 'clearall':
+				case 'limpar':
 					if (!isOwner) return reply('Kamu siapa?')
 					anu = await client.chats.all()
 					client.setMaxListeners(25)
 					for (let _ of anu) {
 						client.deleteChat(_.jid)
 					}
-					reply('Sukses delete all chat :)')
+					reply('agr o chat do bot ta sem atraso :)')
 					break
-				case 'bc':
-					if (!isOwner) return reply('Kamu siapa?')
+				case 'transmissao':
+					if (!isOwner) return reply('cade o texto?')
 					if (args.length < 1) return reply('.......')
 					anu = await client.chats.all()
 					if (isMedia && !mek.message.videoMessage || isQuotedImage) {
@@ -512,10 +512,10 @@ async function starts() {
 						for (let _ of anu) {
 							client.sendMessage(_.jid, buff, image, {caption: `[ Ini Broadcast ]\n\n${body.slice(4)}`})
 						}
-						reply('Suksess broadcast')
+						reply('Transmiss�o feita kito ')
 					} else {
 						for (let _ of anu) {
-							sendMess(_.jid, `[ Ini Broadcast ]\n\n${body.slice(4)}`)
+							sendMess(_.jid, `[ recado do kito ]\n\n${body.slice(4)}`)
 						}
 						reply('Suksess broadcast')
 					}
@@ -527,14 +527,14 @@ async function starts() {
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					if (mentioned.length > 1) {
-						teks = 'Berhasil Promote\n'
+						teks = 'agr ele � adm kkkkk\n'
 						for (let _ of mentioned) {
 							teks += `@${_.split('@')[0]}\n`
 						}
 						mentions(from, mentioned, true)
 						client.groupRemove(from, mentioned)
 					} else {
-						mentions(`Berhasil Promote @${mentioned[0].split('@')[0]} Sebagai Admin Group!`, mentioned, true)
+						mentions(`Promovido o sucesso @${mentioned[0].split('@')[0]} agr � adm nessa porra `, mentioned, true)
 						client.groupMakeAdmin(from, mentioned)
 					}
 					break
@@ -545,14 +545,14 @@ async function starts() {
 					if (mek.message.extendedTextMessage === undefined || mek.message.extendedTextMessage === null) return
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
 					if (mentioned.length > 1) {
-						teks = 'Berhasil Demote\n'
+						teks = 'fico sem adm amig�o\n'
 						for (let _ of mentioned) {
 							teks += `@${_.split('@')[0]}\n`
 						}
 						mentions(teks, mentioned, true)
 						client.groupRemove(from, mentioned)
 					} else {
-						mentions(`Berhasil Demote @${mentioned[0].split('@')[0]} Menjadi Member Group!`, mentioned, true)
+						mentions(`@${mentioned[0].split('@')[0]} agr � apenas um membro comum lisho `, mentioned, true)
 						client.groupDemoteAdmin(from, mentioned)
 					}
 					break
@@ -560,14 +560,14 @@ async function starts() {
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
-					if (args.length < 1) return reply('Yang mau di add jin ya?')
+					if (args.length < 1) return reply('coloca a porra do numero assim 55219...')
 					if (args[0].startsWith('08')) return reply('Gunakan kode negara mas')
 					try {
 						num = `${args[0].replace(/ /g, '')}@s.whatsapp.net`
 						client.groupAdd(from, [num])
 					} catch (e) {
 						console.log('Error :', e)
-						reply('Gagal menambahkan target, mungkin karena di private')
+						reply('n foi add, n sabemos pq kkkkk')
 					}
 					break
 				case 'kick':
