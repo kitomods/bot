@@ -1,5 +1,5 @@
 const help = (prefix) => {
-	return `> *Sticker Commands* <
+	return `>Sticker Commands <
 ${prefix}sticker
 ${prefix}toimg
 ${prefix}meme
