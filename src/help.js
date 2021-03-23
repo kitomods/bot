@@ -7,6 +7,9 @@ const help = (prefix) => {
                                𝐌𝐄𝑵𝐔
 ◤◢◣◥◤◢◣◥◤◢◣◥ ◤◢◣◥◤◢◣◥◤◢◣◥
 ${prefix}fig
+${prefix}pinterest
+${prefix}image
+${prefix}happymod
 ${prefix}playstore
 ${prefix}wame
 ${prefix}play
