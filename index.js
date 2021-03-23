@@ -246,6 +246,21 @@ axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995d
 						reply('H� um erro')
 					}
 					break
+					case 'ttp':
+					if (args.length < 1) return reply('Cad� o texto, hum?')
+					ranp = getRandom('.png')
+					rano = getRandom('.webp')
+					teks = body.slice(4).trim()
+					anu = await fetchJson(`https://mhankbarbar.tech/api/text2image?text=${teks}&apiKey=${BarBarKey}`, {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+						fs.unlinkSync(ranp)
+						if (err) return reply(mess.error.stick)
+						client.sendMessage(from, fs.readFileSync(rano), sticker, {quoted: mek})
+						fs.unlinkSync(rano)
+					})
+                                        await limitAdd(sender)
+					break
 				case 'fig':
 				case 'sticker':
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
@@ -369,7 +384,7 @@ axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995d
 					prefix = args[0]
 					reply(`kitinho o prefix j� foi alterado com sucesso : ${prefix}`)
 					break
-				/*case 'loli':
+				case 'loli':
 					loli.getSFWLoli(async (err, res) => {
 						if (err) return reply('❌ *ERROR* ❌')
 						buffer = await getBuffer(res.url)
@@ -383,7 +398,36 @@ axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995d
 						buffer = await getBuffer(res.url)
 						client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Jangan jadiin bahan buat comli om'})
 					})
-					break*/
+					break
+					case 'wame':
+                  client.updatePresence(from, Presence.composing) 
+                  options = {
+                  text: `  LINK WHATSAPP  \n\n_Solicitado por_ :  @${sender.split("@s.whatsapp.net")[0]} \n\nSeu link WhatsApp:\n\n https://wa.me/${sender.split("@s.whatsapp.net")[0]} \n\n Ou \n\n https://api.whatsapp.com/send?phone=${sender.split("@")[0]} \n\n DARK DOMINA  `,
+                  contextInfo: { mentionedJid: [sender] }
+                  }
+                  client.sendMessage(from, options, text, { quoted: mek } )
+			      break
+			case 'playmp3':
+                reply(mess.wait)
+                play = body.slice(9)
+                anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=${ZeksApi}`, {method: 'get'})
+               if (anu.error) return reply(anu.error)
+                 infomp3 = `  TIMELINE PLAY MP3  \n � T�tulo:  ${anu.result.title}\n � Link:  ${anu.result.source}\n � Tamanho:  ${anu.result.size}\n\n ESPERE NOVAMENTE ENVIANDO POR FAVOR, N�O SPAME O CHAT `
+                buffer = await getBuffer(anu.result.thumbnail)
+                lagu = await getBuffer(anu.result.url_audio)
+                client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
+                client.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
+                await limitAdd(sender) 
+                break 
+					case 'playstore':
+                ps = `${body.slice(11)}`
+                  anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/playstore?q=${ps}`, {method: 'get'})
+                  store = '======================\n'
+                  for (let ply of anu.result){
+                  store += `�  Nome Apk:  ${ply.app.name}\n�  ID:  ${ply.app.id}\n�  Link Apk:  ${ply.app.url}\n===================�]\n`
+                  }
+                  reply(store.trim())
+                  break
 				case 'hilih':
 					if (args.length < 1) return reply('Teksnya mana um?')
 					anu = await fetchJson(`https://mhankbarbars.herokuapp.com/api/hilih?teks=${body.slice(7)}`, {method: 'get'})
@@ -498,7 +542,7 @@ axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995d
 						for (let _ of anu) {
 							client.sendMessage(_.jid, buff, image, {caption: `[ Ini Broadcast ]\n\n${body.slice(4)}`})
 						}
-						reply('Transmiss�o feita kito ')
+						reply('transmissao feita')
 					} else {
 						for (let _ of anu) {
 							sendMess(_.jid, `[ recado do kito ]\n\n${body.slice(4)}`)
