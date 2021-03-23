@@ -7,7 +7,11 @@ const help = (prefix) => {
                                𝐌𝐄𝑵𝐔
 ◤◢◣◥◤◢◣◥◤◢◣◥ ◤◢◣◥◤◢◣◥◤◢◣◥
 ${prefix}fig
+${prefix}playstore
+${prefix}wame
 ${prefix}play
+${prefix}ttp
+${prefix}playmp3
 ${prefix}gay
 ${prefix}toimg
 ${prefix}meme
@@ -21,7 +25,8 @@ ${prefix}ocr
 ${prefix}wait
 ${prefix}prefixo
 ${prefix}limpar
-${prefix}transmissao
+${prefix}bc
+${prefix}emoji
 ${prefix}add
 ${prefix}kick
 ${prefix}promote
