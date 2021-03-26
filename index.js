@@ -398,7 +398,7 @@ axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995d
                     }
                     buffer = await getBuffer(`http://api.lolhuman.xyz/api/smoji/${emoji}?apikey=RiuApikey`)
                     client.sendMe
-                    break
+            
 					case 'pinterest':
                     tels = body.slice(11)
 					client.updatePresence(from, Presence.composing) 
