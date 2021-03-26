@@ -1,33 +1,19 @@
-const menuadmin = (prefix, pushname) => {
- return `todos os adms tem q mandar foto da raba pro marcos
- _obs para o bot executar esses comandos e nescessario dar adm para o bot_
+const menuadm = (prefix, pushname) => {
+ return `
  
- ◪ *COMANDO DOS ADMINS*
+ ◪*COMANDO DOS ADMINS
  │
- ├─ ❏ ${prefix}opengc
- ├─ ❏ ${prefix}closegc
- ├─ ❏ ${prefix}promote
- ├─ ❏ ${prefix}demote
- ├─ ❏ ${prefix}tagall
- ├─ ❏ ${prefix}tagall2
- ├─ ❏ ${prefix}tagall3
- ├─ ❏ ${prefix}tagall4
- ├─ ❏ ${prefix}tagall5
- ├─ ❏ ${prefix}add
- ├─ ❏ ${prefix}kick
- ├─ ❏ ${prefix}listadmins
- ├─ ❏ ${prefix}linkgroup
+ ├─ ❏ ${prefix}kick @...
+ ├─ ❏ ${prefix}add 5521....
+ ├─ ❏ ${prefix}abrirgrupo
+ ├─ ❏ ${prefix}promover
  ├─ ❏ ${prefix}leave
- ├─ ❏ ${prefix}welcome
- ├─ ❏ ${prefix}nsfw
- ├─ ❏ ${prefix}leveling
- ├─ ❏ ${prefix}level
- ├─ ❏ ${prefix}delete
- ├─ ❏ ${prefix}simih
- └─ ❏ ${prefix}ownergroup
+ ├─ ❏ ${prefix}rebaixar
+ ├─ ❏ ${prefix}marcar
+ └─ ❏ ${prefix}fechargrupo
  `
 
 
 }
 
-exports.menuadmin = menuadmin
+exports.menuadm = menuadm
