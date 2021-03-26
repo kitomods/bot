@@ -386,7 +386,6 @@ axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995d
 					break
 					case 'emoji':
 		     case 'sttc2':
-		            if (isBanned) return reply(nad.baned())
 		            if (!isGroup) return reply(mess.only.group)
 		            reply(mess.wait)
                     if (args.length < 1) return reply('*_Qual o emoji da figurinha??_*\n*_Somente emojis padr�es!')
@@ -397,7 +396,8 @@ axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995d
                         emoji = encodeURI(emoji)
                     }
                     buffer = await getBuffer(`http://api.lolhuman.xyz/api/smoji/${emoji}?apikey=RiuApikey`)
-                    client.sendMe
+                    client.sendMessage(from, buffer, sticker, { quoted: mek })
+                    break
 					case 'pinterest':
                     tels = body.slice(11)
 					client.updatePresence(from, Presence.composing) 
