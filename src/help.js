@@ -14,17 +14,12 @@ ${prefix}playstore
 ${prefix}wame
 ${prefix}play
 ${prefix}ttp
-${prefix}playmp3
 ${prefix}gay
 ${prefix}toimg
 ${prefix}meme
 ${prefix}ytmp3
 ${prefix}gtts
-${prefix}loli
-${prefix}nsfwloli
-${prefix}url2img
 ${prefix}simi
-${prefix}ocr
 ${prefix}wait
 ${prefix}prefixo
 ${prefix}limpar
@@ -37,7 +32,6 @@ ${prefix}demote
 ${prefix}linkgroup
 ${prefix}leave
 ${prefix}marcar
-${prefix}simih
 ◤◢◣◥◤◢◣◥◤◢◣◥ ◤◢◣◥◤◢◣◥◤◢◣◥ 
 `
 }
