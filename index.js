@@ -25,8 +25,8 @@ const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
 /******LOAD OF VCARD INPUT******/
 const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'VERSION:3.0\n' 
-            + 'FNkoyo\n' // full name
-            + 'ORG:Owner Bot;\n' // the organization of the contact
+            + 'FN:kito\n' // full name
+            + 'ORG:rude\n' // the organization of the contact
             + 'TEL;type=CELL;type=VOICE;waid=556296638900:+55 (28) 99903-0751\n' // ID do WhatsApp + número de telefone
             + 'END:VCARD'
 /******END OF VCARD INPUT******/
@@ -355,6 +355,117 @@ axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995d
 						reply(`manda imagem ou gif com a legenda ${prefix}fig`)
 					}
 					break
+					case 'pinterest':
+                    tels = body.slice(11)
+					client.updatePresence(from, Presence.composing) 
+					data = await fetchJson(`https://api.fdci.se/rep.php?gambar=${tels}`, {method: 'get'})
+					reply(mess.wait)
+					n = JSON.parse(JSON.stringify(data));
+					nimek =  n[Math.floor(Math.random() * n.length)];
+					pok = await getBuffer(nimek)
+					client.sendMessage(from, pok, image, { quoted: mek, caption: `*PINTEREST*\n\*Resultado da pesquisa* : *${tels}*`})
+                    await limitAdd(sender)
+					break
+					case 'image':
+					if (args.length < 1) return reply('O que voc� quer procurar, mana?')
+					goo = body.slice(7)
+					anu = await fetchJson(`https://api.vhtear.com/googleimg?query=${goo}&apikey=ANTIGRATISNIHANJENKKK`, {method: 'get'})
+					reply(mess.wait)
+				    var pol = JSON.parse(JSON.stringify(anu.result.result_search));
+                    var tes2 =  pol[Math.floor(Math.random() * pol.length)];
+					pint = await getBuffer(tes2)
+					client.sendMessage(from, pint, image, { caption: '*Google Image*\n\n*Resultado da pesquisa : '+goo+'*', quoted: mek })
+					break
+					case 'happymod':
+			data = await fetchJson(`https://tobz-api.herokuapp.com/api/happymod?q=${body.slice(10)}&apikey=${TobzApi}`)
+			hupo = data.result[0] 
+			teks = `*Nome*: ${data.result[0].title}\n*vers�o*: ${hupo.version}\n*Tamanho:* ${hupo.size}\n*root*: ${hupo.root}\n*compra*: ${hupo.price}\n*link*: ${hupo.link}\n*download*: ${hupo.download}`
+			buffer = await getBuffer(hupo.image)
+			client.sendMessage(from, buffer, image, {quoted: mek, caption: `${teks}`})
+			await limitAdd(sender)
+			break
+					case 'emoji':
+				anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/emoji2png?emoji=%F0%9F%98%82&type=aple`, {method: 'get'})
+				jes = await getBuffer(anu)
+				client.sendMessage(from, jes, image,{quoted : mek, caption : 'DONE'})
+				break
+					case 'owner':
+                    client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact, { quoted: mek})
+                    client.sendMessage(from, 'Ctt do meu dono ai, pfv n flode o chat',MessageType.text, { quoted: mek} )
+                    break
+				        case 'gay':		
+	            	if (args.length < 1) return reply('marque seus amigos!')
+					rate = body.slice(1)
+					const ti =['4','9','17','28','34','48','59','62','74','83','97','100','29','94','75','82','41','39']
+					const kl = ti[Math.floor(Math.random() * ti.length)]
+					client.sendMessage(from, 'Como voc� � gay: *'+rate+'*\n\nSua porcentagem gay : '+ kl+'%', text, { quoted: mek })
+					break
+					case 'wame':
+                  client.updatePresence(from, Presence.composing) 
+                  options = {
+                  text: `  LINK WHATSAPP  \n\n_Solicitado por_ :  @${sender.split("@s.whatsapp.net")[0]} \n\nSeu link WhatsApp:\n\n https://wa.me/${sender.split("@s.whatsapp.net")[0]} \n\n Ou \n\n https://api.whatsapp.com/send?phone=${sender.split("@")[0]} \n\n DARK DOMINA  `,
+                  contextInfo: { mentionedJid: [sender] }
+                  }
+                  client.sendMessage(from, options, text, { quoted: mek } )
+			      break
+			case 'playmp3':
+                reply(mess.wait)
+                play = body.slice(9)
+                anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=${ZeksApi}`, {method: 'get'})
+               if (anu.error) return reply(anu.error)
+                 infomp3 = `  TIMELINE PLAY MP3  \n � T�tulo:  ${anu.result.title}\n � Link:  ${anu.result.source}\n � Tamanho:  ${anu.result.size}\n\n ESPERE NOVAMENTE ENVIANDO POR FAVOR, N�O SPAME O CHAT `
+                buffer = await getBuffer(anu.result.thumbnail)
+                lagu = await getBuffer(anu.result.url_audio)
+                client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
+                client.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
+                await limitAdd(sender) 
+                break 
+                case 'wame':
+                  client.updatePresence(from, Presence.composing) 
+                  options = {
+                  text: `  LINK WHATSAPP  \n\n_Solicitado por_ :  @${sender.split("@s.whatsapp.net")[0]} \n\nSeu link WhatsApp:\n\n https://wa.me/${sender.split("@s.whatsapp.net")[0]} \n\n Ou \n\n https://api.whatsapp.com/send?phone=${sender.split("@")[0]} \n`,
+                  contextInfo: { mentionedJid: [sender] }
+                  }
+                  client.sendMessage(from, options, text, { quoted: mek } )
+			      break
+					case 'playstore':
+                ps = `${body.slice(11)}`
+                  anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/playstore?q=${ps}`, {method: 'get'})
+                  store = '======================\n'
+                  for (let ply of anu.result){
+                  store += `Nome Apk:  ${ply.app.name}\nID:  ${ply.app.id}\n�  Link Apk:  ${ply.app.url}\n===================\n`
+                  }
+                  reply(store.trim())
+                  break
+                  case 'porno':
+				    if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
+					memein = await kagApi.memeindo()
+					buffer = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdU0UmT8RigE3Hbr80gmigjb2AdnPJklcQ3A&usqp=CAU`)
+					buffer = await getBuffer(`https://fotosdemulheresnuas.net/wp-content/uploads/2018/11/novinha-petuda-fotos-4.jpg`)
+					buffer = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSqWoYHFA_SDgUip6MtvimWRdub_lshAn5Edg&usqp=CAU`)
+					buffer = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRwvLmbqW9LeOCpXiGxgu3By4eQEmJM2Xp26Q&usqp=CAU`)
+					buffer = await getBuffer(`https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcnhmpQD1C1Dp7I2_kpi13gAsuoudOPPraog&usqp=CAU`)
+					buffer = await getBuffer(`https://fotosdemulheresnuas.net/wp-content/uploads/2018/12/prima-novinha-pelada-6.jpg`)
+					buffer = await getBuffer(`https://fotosdemulheresnuas.net/wp-content/uploads/2018/12/Mia-Khalifa-fotos-5.jpg`)
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'heheheheheh'})
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'heheheheheh'})
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'heheheheheh'})
+					buffer = await getBuffer(`https://fotosdemulheresnuas.net/wp-content/uploads/2018/12/Mia-Khalifa-fotos-6.jpg`)
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'heheheheheh'})
+					buffer = await getBuffer(`https://fotosdemulheresnuas.net/wp-content/uploads/2018/12/Mia-Khalifa-fotos-7.jpg`)
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'heheheheheh'})
+					buffer = await getBuffer(`https://fotosdemulheresnuas.net/wp-content/uploads/2018/12/Mia-Khalifa-fotos-8.jpg`)
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'heheheheheh'})
+					buffer = await getBuffer(`https://fotosdemulheresnuas.net/wp-content/uploads/2018/12/Mia-Khalifa-fotos-10.jpg`)
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'heheheheheh'})
+					buffer = await getBuffer(`https://fotosdemulheresnuas.net/wp-content/uploads/2018/12/Mia-Khalifa-fotos-16.jpg`)
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'heheheheheh'})
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'heheheheheh'})
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'heheheheheh'})
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'heheheheheh'})
+					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'k'})
+					break
 				case 'gtts':
 					if (args.length < 1) return client.sendMessage(from, 'Kode bahasanya mana om?', text, {quoted: mek})
 					const gtts = require('./lib/gtts')(args[0])
@@ -399,35 +510,6 @@ axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995d
 						client.sendMessage(from, buffer, image, {quoted: mek, caption: 'Jangan jadiin bahan buat comli om'})
 					})
 					break
-					case 'wame':
-                  client.updatePresence(from, Presence.composing) 
-                  options = {
-                  text: `  LINK WHATSAPP  \n\n_Solicitado por_ :  @${sender.split("@s.whatsapp.net")[0]} \n\nSeu link WhatsApp:\n\n https://wa.me/${sender.split("@s.whatsapp.net")[0]} \n\n Ou \n\n https://api.whatsapp.com/send?phone=${sender.split("@")[0]} \n\n DARK DOMINA  `,
-                  contextInfo: { mentionedJid: [sender] }
-                  }
-                  client.sendMessage(from, options, text, { quoted: mek } )
-			      break
-			case 'playmp3':
-                reply(mess.wait)
-                play = body.slice(9)
-                anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=${ZeksApi}`, {method: 'get'})
-               if (anu.error) return reply(anu.error)
-                 infomp3 = `  TIMELINE PLAY MP3  \n � T�tulo:  ${anu.result.title}\n � Link:  ${anu.result.source}\n � Tamanho:  ${anu.result.size}\n\n ESPERE NOVAMENTE ENVIANDO POR FAVOR, N�O SPAME O CHAT `
-                buffer = await getBuffer(anu.result.thumbnail)
-                lagu = await getBuffer(anu.result.url_audio)
-                client.sendMessage(from, buffer, image, {quoted: mek, caption: infomp3})
-                client.sendMessage(from, lagu, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
-                await limitAdd(sender) 
-                break 
-					case 'playstore':
-                ps = `${body.slice(11)}`
-                  anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/playstore?q=${ps}`, {method: 'get'})
-                  store = '======================\n'
-                  for (let ply of anu.result){
-                  store += `�  Nome Apk:  ${ply.app.name}\n�  ID:  ${ply.app.id}\n�  Link Apk:  ${ply.app.url}\n===================�]\n`
-                  }
-                  reply(store.trim())
-                  break
 				case 'hilih':
 					if (args.length < 1) return reply('Teksnya mana um?')
 					anu = await fetchJson(`https://mhankbarbars.herokuapp.com/api/hilih?teks=${body.slice(7)}`, {method: 'get'})
@@ -549,22 +631,6 @@ axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995d
 						}
 						reply('prontinhu')
 					}
-					break
-					    case 'owner':
-                    client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact, { quoted: mek})
-                    client.sendMessage(from, 'Ctt do meu dono ai, pfv n flode o chat',MessageType.text, { quoted: mek} )
-                    break
-                    case 'emoji':
-				anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/emoji2png?emoji=%F0%9F%98%82&type=aple`, {method: 'get'})
-				jes = await getBuffer(anu)
-				client.sendMessage(from, jes, image,{quoted : mek, caption : 'DONE'})
-				break
-				        case 'gay':		
-	            	if (args.length < 1) return reply('marque seus amigos!')
-					rate = body.slice(1)
-					const ti =['4','9','17','28','34','48','59','62','74','83','97','100','29','94','75','82','41','39']
-					const kl = ti[Math.floor(Math.random() * ti.length)]
-					client.sendMessage(from, 'Como voc� � gay: *'+rate+'*\n\nSua porcentagem gay : '+ kl+'%', text, { quoted: mek })
 					break
                                 case 'promote':
 					if (!isGroup) return reply(mess.only.group)
