@@ -19,19 +19,9 @@ ${prefix}toimg
 ${prefix}meme
 ${prefix}ytmp3
 ${prefix}gtts
-${prefix}simi
 ${prefix}wait
-${prefix}prefixo
-${prefix}limpar
-${prefix}bc
 ${prefix}emoji
-${prefix}add
-${prefix}kick
-${prefix}promote
-${prefix}demote
-${prefix}linkgroup
-${prefix}leave
-${prefix}marcar
+${prefix}link
 ◤◢◣◥◤◢◣◥◤◢◣◥ ◤◢◣◥◤◢◣◥◤◢◣◥ 
 `
 }
