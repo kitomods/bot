@@ -7,6 +7,9 @@ const {
 } = require('@adiwajshing/baileys')
 const { color, bgcolor } = require('./lib/color')
 const { help } = require('./src/help')
+const { menuadm } = require('./src/menuadm')
+const { kitomenu } = require('./src/kitomenu')
+const { tabela } = require('./src/tabela')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson, fetchText } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
@@ -27,7 +30,7 @@ const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'VERSION:3.0\n' 
             + 'FN:kito\n' // full name
             + 'ORG:rude\n' // the organization of the contact
-            + 'TEL;type=CELL;type=VOICE;waid=556296638900:+55 (28) 99903-0751\n' // ID do WhatsApp + número de telefone
+            + 'TEL;type=CELL;type=VOICE;waid=556296638900:+55 21 99144-4452\n' // ID do WhatsApp + número de telefone
             + 'END:VCARD'
 /******END OF VCARD INPUT******/
 
@@ -125,7 +128,7 @@ async function starts() {
 
 			mess = {
 				wait: 'ta fazendo garai espera kkk',
-				success: 'só sucesso 😎🤙',
+				success: 's� sucesso',
 				error: {
 					stick: 'n consegui fazer essa porra desculpa 😔',
 					Iv: ' Link inválido 🙄💅'
@@ -140,7 +143,7 @@ async function starts() {
 			}
 
 			const botNumber = client.user.jid
-			const ownerNumber = ["552173786669@s.whatsapp.net"] // replace this with your number
+			const ownerNumber = ["5521991444452@s.whatsapp.net"] // replace this with your number
 			const isGroup = from.endsWith('@g.us')
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await client.groupMetadata(from) : ''
@@ -188,6 +191,15 @@ axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995d
 				case 'help':
 				case 'menu':
 					client.sendMessage(from, help(prefix), text)
+					break
+					case 'kitomenu':
+					client.sendMessage(from, kitomenu(prefix), text)
+					break
+					case 'menuadm':
+					client.sendMessage(from, menuadm(prefix), text)
+					break
+					case 'tabela':
+					client.sendMessage(from, tabela(prefix), text)
 					break
 				case 'info':
 					me = client.user
@@ -355,6 +367,38 @@ axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995d
 						reply(`manda imagem ou gif com a legenda ${prefix}fig`)
 					}
 					break
+					case 'linkgrup':
+				case 'linkgc':
+				    client.updatePresence(from, Presence.composing) 
+				    if (!isGroup) return reply(mess.only.group)
+                                     if (!isUser) return reply(mess.only.daftarB)
+					linkgc = await client.groupInviteCode (from)
+					yeh = `https://chat.whatsapp.com/${linkgc}`
+					client.sendMessage(from, yeh, text, {quoted: mek, detectLinks: false})
+					break
+					case 'delete':
+				case 'del':
+				case 'd':  
+					if (!isOwner) return reply('so meu dono lindo faz isso')
+					if (!isGroup)return reply(mess.only.group)
+					if (!isGroupAdmins)return reply(mess.only.admin)
+					client.deleteMessage(from, { id: mek.message.extendedTextMessage.contextInfo.stanzaId, remoteJid: from, fromMe: true })
+					break
+					case 'emoji':
+		     case 'sttc2':
+		            if (isBanned) return reply(nad.baned())
+		            if (!isGroup) return reply(mess.only.group)
+		            reply(mess.wait)
+                    if (args.length < 1) return reply('*_Qual o emoji da figurinha??_*\n*_Somente emojis padr�es!')
+                    emoji = args[0]
+                    try {
+                        emoji = encodeURI(emoji[0])
+                    } catch {
+                        emoji = encodeURI(emoji)
+                    }
+                    buffer = await getBuffer(`http://api.lolhuman.xyz/api/smoji/${emoji}?apikey=RiuApikey`)
+                    client.sendMe
+                    break
 					case 'pinterest':
                     tels = body.slice(11)
 					client.updatePresence(from, Presence.composing) 
@@ -366,16 +410,6 @@ axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995d
 					client.sendMessage(from, pok, image, { quoted: mek, caption: `*PINTEREST*\n\*Resultado da pesquisa* : *${tels}*`})
                     await limitAdd(sender)
 					break
-					case 'image':
-					if (args.length < 1) return reply('O que voc� quer procurar, mana?')
-					goo = body.slice(7)
-					anu = await fetchJson(`https://api.vhtear.com/googleimg?query=${goo}&apikey=ANTIGRATISNIHANJENKKK`, {method: 'get'})
-					reply(mess.wait)
-				    var pol = JSON.parse(JSON.stringify(anu.result.result_search));
-                    var tes2 =  pol[Math.floor(Math.random() * pol.length)];
-					pint = await getBuffer(tes2)
-					client.sendMessage(from, pint, image, { caption: '*Google Image*\n\n*Resultado da pesquisa : '+goo+'*', quoted: mek })
-					break
 					case 'happymod':
 			data = await fetchJson(`https://tobz-api.herokuapp.com/api/happymod?q=${body.slice(10)}&apikey=${TobzApi}`)
 			hupo = data.result[0] 
@@ -384,12 +418,7 @@ axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995d
 			client.sendMessage(from, buffer, image, {quoted: mek, caption: `${teks}`})
 			await limitAdd(sender)
 			break
-					case 'emoji':
-				anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/emoji2png?emoji=%F0%9F%98%82&type=aple`, {method: 'get'})
-				jes = await getBuffer(anu)
-				client.sendMessage(from, jes, image,{quoted : mek, caption : 'DONE'})
-				break
-					case 'owner':
+					case 'dono':
                     client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact, { quoted: mek})
                     client.sendMessage(from, 'Ctt do meu dono ai, pfv n flode o chat',MessageType.text, { quoted: mek} )
                     break
@@ -632,7 +661,7 @@ axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995d
 						reply('prontinhu')
 					}
 					break
-                                case 'promote':
+                                case 'promover':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -650,7 +679,7 @@ axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995d
 						client.groupMakeAdmin(from, mentioned)
 					}
 					break
-				case 'demote':
+				case 'rebaixar':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -796,6 +825,32 @@ axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995d
 					} else {
 						reply('precisa de foto eu n sei pq')
 					}
+					break
+					case 'fechargrupo':
+					client.updatePresence(from, Presence.composing) 
+					if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
+					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					var nomor = mek.participant
+					const close = {
+					text: `Grupo fechado pelo administrador @${nomor.split("@s.whatsapp.net")[0]}\nagora *apenas administradores* podem enviar mensagens`,
+					contextInfo: { mentionedJid: [nomor] }
+					}
+					client.groupSettingChange (from, GroupSettingChange.messageSend, true);
+					reply(close)
+					break
+					case 'abrirgrupo':
+                case 'bukagc':
+					client.updatePresence(from, Presence.composing) 
+					if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
+					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
+					open = {
+					text: `Grupo aberto pelo administrador @${sender.split("@")[0]}\nagora *todos os participantes* podem enviar mensagens`,
+					contextInfo: { mentionedJid: [sender] }
+					}
+					client.groupSettingChange (from, GroupSettingChange.messageSend, false)
+					client.sendMessage(from, open, text, {quoted: mek})
 					break
 				default:
 					if (isGroup && isSimi && budy != undefined) {
