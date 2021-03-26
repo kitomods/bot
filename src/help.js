@@ -21,6 +21,7 @@ ${prefix}ytmp3
 ${prefix}gtts
 ${prefix}wait
 ${prefix}emoji
+${prefix}tabela
 ${prefix}link
 ◤◢◣◥◤◢◣◥◤◢◣◥ ◤◢◣◥◤◢◣◥◤◢◣◥ 
 `
