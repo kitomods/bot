@@ -122,6 +122,7 @@ async function starts() {
 			const time = moment.tz('Asia/Jakarta').format('DD/MM HH:mm:ss')
 			body = (type === 'conversation' && mek.message.conversation.startsWith(prefix)) ? mek.message.conversation : (type == 'imageMessage') && mek.message.imageMessage.caption.startsWith(prefix) ? mek.message.imageMessage.caption : (type == 'videoMessage') && mek.message.videoMessage.caption.startsWith(prefix) ? mek.message.videoMessage.caption : (type == 'extendedTextMessage') && mek.message.extendedTextMessage.text.startsWith(prefix) ? mek.message.extendedTextMessage.text : ''
 			budy = (type === 'conversation') ? mek.message.conversation : (type === 'extendedTextMessage') ? mek.message.extendedTextMessage.text : ''
+			const messagesC = pes.slice(0).trim().split(/ +/).shift().toLowerCase()
 			const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
 			const args = body.trim().split(/ +/).slice(1)
 			const isCmd = body.startsWith(prefix)
@@ -170,30 +171,37 @@ async function starts() {
 				(id == null || id == undefined || id == false) ? client.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
 			}
 			
+			
 			if (messagesC.includes("fdp")){
 			client.updatePresence(from, Presence.composing)
 			reply("teu pai")
 	}
+	
 	         if (messagesC.includes("")){
 			client.updatePresence(from, Presence.composing)
 			reply(" to t� doid�o")
 	}
+	
              if (messagesC.includes("back preto")){
 			client.updatePresence(from, Presence.composing)
 			reply("igual carv�o esse fdp kakakakakakakak")
 	}
+	
 	        if (messagesC.includes("cerol corno")){
 			client.updatePresence(from, Presence.composing)
 			reply("dms pra q foi jogar fri frai akakakakakak")
 	}
+	
 	         if (messagesC.includes("krawk fdp")){
 			client.updatePresence(from, Presence.composing)
 			reply("aquela putinha do caralho akakakakak")
 	}
+	
 	         if (messagesC.includes("kito gostoso")){
 			client.updatePresence(from, Presence.composing)
 			reply("dms eu sentava")
 	}
+	
 	        if (messagesC.includes("vai toma no cu")){
 			client.updatePresence(from, Presence.composing)
 			reply("vai vc putinha do caralho")
