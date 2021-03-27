@@ -169,7 +169,42 @@ async function starts() {
 			const mentions = (teks, memberr, id) => {
 				(id == null || id == undefined || id == false) ? client.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
 			}
+			
+			if (messagesC.includes("fdp")){
+			client.updatePresence(from, Presence.composing)
+			reply("teu pai")
+	}
+	         if (messagesC.includes("")){
+			client.updatePresence(from, Presence.composing)
+			reply(" to t� doid�o")
+	}
+             if (messagesC.includes("back preto")){
+			client.updatePresence(from, Presence.composing)
+			reply("igual carv�o esse fdp kakakakakakakak")
+	}
+	        if (messagesC.includes("cerol corno")){
+			client.updatePresence(from, Presence.composing)
+			reply("dms pra q foi jogar fri frai akakakakakak")
+	}
+	         if (messagesC.includes("krawk fdp")){
+			client.updatePresence(from, Presence.composing)
+			reply("aquela putinha do caralho akakakakak")
+	}
+	         if (messagesC.includes("kito gostoso")){
+			client.updatePresence(from, Presence.composing)
+			reply("dms eu sentava")
+	}
+	        if (messagesC.includes("vai toma no cu")){
+			client.updatePresence(from, Presence.composing)
+			reply("vai vc putinha do caralho")
+	}
+//msc
 
+           if (messagesC.includes("cu limpinho")){
+			client.updatePresence(from, Presence.composing)
+			tujuh = fs.readFileSync('./assets/culimpo.mp3');
+            client.sendMessage(from, tujuh, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
+	}
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
 			const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
@@ -359,13 +394,6 @@ async function starts() {
 						reply(`manda imagem ou gif com a legenda ${prefix}fig`)
 					}
 					break
-					case 'corno':		
-	            	if (args.length < 1) return reply('marque seus amigos!')
-					rate = body.slice(1)
-					const tu =['4','9','17','28','34','48','59','62','78','85','97','100','29','94','75','82','41','39']
-					const ka = ty[Math.floor(Math.random() * ti.length)]
-					client.sendMessage(from, 'vc � corno?'+rate+'*\n\nSua porcentagem de chifrudo : '+ kl+'%', text, { quoted: mek })
-					break
 					case 'linkgrup':
 				case 'linkgc':
 				    client.updatePresence(from, Presence.composing) 
@@ -493,10 +521,21 @@ async function starts() {
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'heheheheheh'})
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'k'})
 					break
+					case 'admins':
+					client.updatePresence(from, Presence.composing) 
+					if (!isGroup) return reply(mess.only.group)
+					teks = `Lista admin do grupo*${groupMetadata.subject}*\nTotal : ${groupAdmins.length}\n\n`
+					no = 0
+					for (let admon of groupAdmins) {
+						no += 1
+						teks += `[${no.toString()}] @${admon.split('@')[0]}\n`
+					}
+					mentions(teks, groupAdmins, true)
+					break
 				case 'ts':
-					if (args.length < 1) return client.sendMessage(from, 'Kode bahasanya mana om?', text, {quoted: mek})
+					if (args.length < 1) return client.sendMessage(from, 'Qual � o c�digo da linguagem, tio?', text, {quoted: mek})
 					const gtts = require('./lib/gtts')(args[0])
-					if (args.length < 2) return client.sendMessage(from, 'Textnya mana om', text, {quoted: mek})
+					if (args.length < 2) return client.sendMessage(from, 'Cad� o texto', text, {quoted: mek})
 					dtt = body.slice(9)
 					ranm = getRandom('.mp3')
 					dtt.length > 600
@@ -612,7 +651,6 @@ async function starts() {
 				case 'marcar':
 				client.updatePresence(from, Presence.composing) 
 					if (!isGroup) return reply(mess.only.group)
-                                        if (!isUser) return reply(mess.only.daftarB)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					members_id = []
 					teks = (args.length > 1) ? body.slice(8).trim() : ''
@@ -626,7 +664,6 @@ async function starts() {
                                 case 'marcaratk':
 				client.updatePresence(from, Presence.composing) 
 					if (!isGroup) return reply(mess.only.group)
-                                        if (!isUser) return reply(mess.only.daftarB)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					members_id = []
 					teks = (args.length > 1) ? body.slice(8).trim() : ''
