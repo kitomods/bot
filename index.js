@@ -172,48 +172,63 @@ async function starts() {
 				(id == null || id == undefined || id == false) ? client.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
 			}
 			
-			
 			if (messagesC.includes("fdp")){
 			client.updatePresence(from, Presence.composing)
 			reply("teu pai")
 	}
 	
-	         if (messagesC.includes("")){
+		if (messagesC.includes("blackpreto")){
 			client.updatePresence(from, Presence.composing)
-			reply(" to t� doid�o")
+			reply("ele � limdo igual um carvao")
 	}
 	
-             if (messagesC.includes("back preto")){
+			if (messagesC.includes("lixo")){
 			client.updatePresence(from, Presence.composing)
-			reply("igual carv�o esse fdp kakakakakakakak")
+			reply("por acaso eu sou vc agr?")
 	}
 	
-	        if (messagesC.includes("cerol corno")){
+			if (messagesC.includes("but")){
 			client.updatePresence(from, Presence.composing)
-			reply("dms pra q foi jogar fri frai akakakakakak")
+			reply("� bot seu analfabeto")
 	}
 	
-	         if (messagesC.includes("krawk fdp")){
+			if (messagesC.includes("cerolcorno")){
 			client.updatePresence(from, Presence.composing)
-			reply("aquela putinha do caralho akakakakak")
+			reply("corno dms kakakakakaka vai jogar fri frai pra q")
 	}
 	
-	         if (messagesC.includes("kito gostoso")){
+	        if (messagesC.includes("kitogostoso")){
 			client.updatePresence(from, Presence.composing)
-			reply("dms eu sentava")
+			reply("aiinnnn ele � mtooo bato uma pra ele todo dia")
 	}
 	
-	        if (messagesC.includes("vai toma no cu")){
+		if (messagesC.includes("botlixo")){
 			client.updatePresence(from, Presence.composing)
-			reply("vai vc putinha do caralho")
+			reply("lisho e seu pai q te fez")
+	}
+	
+			if (messagesC.includes("vtmc")){
+			client.updatePresence(from, Presence.composing)
+			reply("ovo comer seu cu em")
+	}
+	
+			if (messagesC.includes("vsf")){
+			client.updatePresence(from, Presence.composing)
+			reply("so se for com vc bb")
+	}
+	
+			if (messagesC.includes("kito")){
+			client.updatePresence(from, Presence.composing)
+			reply("s� de falar o nome gozei")
 	}
 //msc
 
-           if (messagesC.includes("cu limpinho")){
+           if (messagesC.includes("culimpinho")){
 			client.updatePresence(from, Presence.composing)
 			tujuh = fs.readFileSync('./assets/culimpo.mp3');
             client.sendMessage(from, tujuh, MessageType.audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
 	}
+	
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
 			const isQuotedImage = type === 'extendedTextMessage' && content.includes('imageMessage')
