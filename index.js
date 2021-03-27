@@ -169,14 +169,6 @@ async function starts() {
 			const mentions = (teks, memberr, id) => {
 				(id == null || id == undefined || id == false) ? client.sendMessage(from, teks.trim(), extendedText, {contextInfo: {"mentionedJid": memberr}}) : client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": memberr}})
 			}
-			if (text.includes("geradorcpf")){
-const aris = text.replace(/!geradorcpf/, "")
-axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995def08ff1e2fa`).then((res) => {
-	conn.sendMessage(id, '[] ESPERE ESTA PROCESSANDO', MessageType.text)
-         let cpf = `*CPF GERADOS* \n\n  *CPF:* ${res.data.data.number}  \n\n `;
-    conn.sendMessage(id, cpf ,MessageType.text);
-})
-}	
 
 			colors = ['red','white','black','blue','yellow','green']
 			const isMedia = (type === 'imageMessage' || type === 'videoMessage')
@@ -426,7 +418,14 @@ axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995d
 					rate = body.slice(1)
 					const ti =['4','9','17','28','34','48','59','62','74','83','97','100','29','94','75','82','41','39']
 					const kl = ti[Math.floor(Math.random() * ti.length)]
-					client.sendMessage(from, 'Como voc� � gay: *'+rate+'*\n\nSua porcentagem gay : '+ kl+'%', text, { quoted: mek })
+					client.sendMessage(from, 'vc � mto gay kaakakaka: *'+rate+'*\n\nSua porcentagem gay : '+ kl+'%', text, { quoted: mek })
+					break
+					case 'corno':		
+	            	if (args.length < 1) return reply('marque seus amigos!')
+					rate = body.slice(1)
+					const ti =['4','9','17','28','34','48','59','62','74','83','97','100','29','94','75','82','41','39']
+					const kl = ti[Math.floor(Math.random() * ti.length)]
+					client.sendMessage(from, 'vc � corno?: *'+rate+'*\n\nSua porcentagem de chifrudo : '+ kl+'%', text, { quoted: mek })
 					break
 					case 'wame':
                   client.updatePresence(from, Presence.composing) 
@@ -494,7 +493,7 @@ axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995d
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'heheheheheh'})
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'k'})
 					break
-				case 'gtts':
+				case 'ts':
 					if (args.length < 1) return client.sendMessage(from, 'Kode bahasanya mana om?', text, {quoted: mek})
 					const gtts = require('./lib/gtts')(args[0])
 					if (args.length < 2) return client.sendMessage(from, 'Textnya mana om', text, {quoted: mek})
@@ -522,6 +521,15 @@ axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995d
 					if (!isOwner) return reply(mess.only.ownerB)
 					prefix = args[0]
 					reply(`kitinho o prefix j� foi alterado com sucesso : ${prefix}`)
+					break
+					case 'novafoto':
+				client.updatePresence(from, Presence.composing) 
+				if (!isQuotedImage) return reply(`Envie fotos com legendas ${prefix}setbotpp ou tags de imagem que já foram enviadas`)
+					if (!isOwner) return reply(mess.only.ownerB)
+					enmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
+					media = await client.downloadAndSaveMediaMessage(enmedia)
+					await client.updateProfilePicture(botNumber, media)
+					reply('Obrigado pelo novo perfil😗')
 					break
 				case 'loli':
 					loli.getSFWLoli(async (err, res) => {
@@ -602,26 +610,32 @@ axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995d
 					})
 					break
 				case 'marcar':
+				client.updatePresence(from, Presence.composing) 
 					if (!isGroup) return reply(mess.only.group)
+                                        if (!isUser) return reply(mess.only.daftarB)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					members_id = []
 					teks = (args.length > 1) ? body.slice(8).trim() : ''
-					teks += '\n\n'
-					for (let mem of groupMembers) {
-						teks += `*#* @${mem.jid.split('@')[0]}\n`
-						members_id.push(mem.jid)
-					}
-					mentions(teks, members_id, true)
-					break
-                                case 'tagall2':
-					members_id = []
-					teks = (args.length > 1) ? body.slice(8).trim() : ''
-					teks += '\n\n'
+					teks += `  Total : ${groupMembers.length}\n`
 					for (let mem of groupMembers) {
 						teks += `╠➥ @${mem.jid.split('@')[0]}\n`
 						members_id.push(mem.jid)
 					}
-					reply(teks)
+					mentions('╔══✪〘 Mencionando Todos 〙✪══\n╠➥'+teks+'╚═〘 RUDE-BOT 〙', members_id, true)
+					break
+                                case 'marcaratk':
+				client.updatePresence(from, Presence.composing) 
+					if (!isGroup) return reply(mess.only.group)
+                                        if (!isUser) return reply(mess.only.daftarB)
+					if (!isGroupAdmins) return reply(mess.only.admin)
+					members_id = []
+					teks = (args.length > 1) ? body.slice(8).trim() : ''
+					teks += `  Total : ${groupMembers.length}\n`
+					for (let mem of groupMembers) {
+						teks += `╠➥ @${mem.jid.split('@')[0]}\n`
+						members_id.push(mem.jid)
+					}
+					mentions('╔══✪〘 ATK AGR GOGOGO〙✪══\n╠➥'+teks+'╚═〘 RUDE-BOT 〙', members_id, true)
 					break
                                 case 'tagall3':
 					members_id = []
@@ -745,7 +759,7 @@ axios.get(`http://geradorapp.com/api/v1/cpf/generate?token=40849779ec68f8351995d
                                         linkgc = await client.groupInviteCode(from)
                                         reply('https://chat.whatsapp.com/'+linkgc)
                                         break
-                                case 'leave':
+                                case 'sair':
                     if (!isGroup) return reply(mess.only.group)
                     if (!isGroupAdmins) return reply(mess.only.admin)
                      setTimeout( () => {
