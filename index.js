@@ -128,10 +128,10 @@ async function starts() {
 
 			mess = {
 				wait: 'ta fazendo garai espera kkk',
-				success: 's� sucesso',
+				success: 's� sucesso',
 				error: {
 					stick: 'n consegui fazer essa porra desculpa 😔',
-					Iv: ' Link inválido 🙄💅'
+					Iv: ' Link inválido '
 				},
 				only: {
 					group: 'o garai isso aí só funfa em grupo',
