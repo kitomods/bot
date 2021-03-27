@@ -7,7 +7,7 @@ const menuadm = (prefix, pushname) => {
  ├─ ❏ ${prefix}add 5521....
  ├─ ❏ ${prefix}abrirgrupo
  ├─ ❏ ${prefix}promover
- ├─ ❏ ${prefix}leave
+ ├─ ❏ ${prefix}sair
  ├─ ❏ ${prefix}rebaixar
  ├─ ❏ ${prefix}marcar
  └─ ❏ ${prefix}fechargrupo
