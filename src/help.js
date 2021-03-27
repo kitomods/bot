@@ -8,6 +8,7 @@ const help = (prefix) => {
 ◤◢◣◥◤◢◣◥◤◢◣◥ ◤◢◣◥◤◢◣◥◤◢◣◥
 ${prefix}kitomenu
 ${prefix}menuadm
+${prefix}admins
 ${prefix}fig
 ${prefix}pinterest
 ${prefix}image
