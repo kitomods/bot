@@ -448,12 +448,12 @@ async function starts() {
                     client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact, { quoted: mek})
                     client.sendMessage(from, 'Ctt do meu dono ai, pfv n flode o chat',MessageType.text, { quoted: mek} )
                     break
-                    case 'gay':		
+                    case 'corno':		
 	            	if (args.length < 1) return reply('marque seus amigos!')
 					rate = body.slice(1)
 					const ti =['4','9','17','28','34','48','59','62','74','83','97','100','29','94','75','82','41','39']
 					const kl = ti[Math.floor(Math.random() * ti.length)]
-					client.sendMessage(from, 'Como voc� � gay: *'+rate+'*\n\nSua porcentagem gay : '+ kl+'%', text, { quoted: mek })
+					client.sendMessage(from, 'vc e corno?'+rate+'*\n\n a porcentagem de chifrudo q vc � : '+ kl+'%', text, { quoted: mek })
 					break
 					case 'wame':
                   client.updatePresence(from, Presence.composing) 
