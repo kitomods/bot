@@ -1,4 +1,4 @@
-const kitomenu = (prefix) => {
+const tabela = (prefix) => {
 	return `
  ═════════╠☆╣════════
 𝑳𝜩𝑻𝑹𝑨𝑺 𝑪𝑶𝑴 𝑺𝜩𝑻𝑨𝑺
@@ -1634,4 +1634,4 @@ A=Δ꙰ Λ λ Ⱥ ₳ ą å ส สั ล α ค ศ Ⴉ 🇦ศ
 `
 }
 
-exports.kitomenu = kitomenu
+exports.tabela = tabela
