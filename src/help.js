@@ -16,6 +16,7 @@ ${prefix}playstore
 ${prefix}wame
 ${prefix}play
 ${prefix}gay
+${prefix}corno
 ${prefix}toimg
 ${prefix}meme
 ${prefix}ytmp3
