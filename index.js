@@ -362,7 +362,7 @@ async function starts() {
 					case 'corno':		
 	            	if (args.length < 1) return reply('marque seus amigos!')
 					rate = body.slice(1)
-					const ti =['4','9','17','28','34','48','59','62','78','85','97','100','29','94','75','82','41','39']
+					const tu =['4','9','17','28','34','48','59','62','78','85','97','100','29','94','75','82','41','39']
 					const kl = ti[Math.floor(Math.random() * ti.length)]
 					client.sendMessage(from, 'vc � corno?'+rate+'*\n\nSua porcentagem de chifrudo : '+ kl+'%', text, { quoted: mek })
 					break
