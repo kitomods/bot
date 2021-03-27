@@ -5,8 +5,7 @@ const kitomenu = (prefix) => {
  ├─ ❏ ${prefix}prefixo
  ├─ ❏ ${prefix}limpar
  ├─ ❏ ${prefix}bc
- ├─ ❏ ${prefix}novafoto
- └─ ❏ ${prefix}
+ └─ ❏ ${prefix}novafoto
 `
 }
 
