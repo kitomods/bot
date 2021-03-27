@@ -6,6 +6,8 @@ const help = (prefix) => {
 
                                𝐌𝐄𝑵𝐔
 ◤◢◣◥◤◢◣◥◤◢◣◥ ◤◢◣◥◤◢◣◥◤◢◣◥
+${prefix}kitomenu
+${prefix}menuadm
 ${prefix}fig
 ${prefix}pinterest
 ${prefix}image
@@ -13,12 +15,11 @@ ${prefix}happymod
 ${prefix}playstore
 ${prefix}wame
 ${prefix}play
-${prefix}ttp
 ${prefix}gay
 ${prefix}toimg
 ${prefix}meme
 ${prefix}ytmp3
-${prefix}gtts
+${prefix}ts
 ${prefix}wait
 ${prefix}emoji
 ${prefix}tabela
