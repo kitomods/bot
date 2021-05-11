@@ -30,7 +30,7 @@ const vcard = 'BEGIN:VCARD\n' // metadata of the contact card
             + 'VERSION:3.0\n' 
             + 'FN:kito\n' // full name
             + 'ORG:rude\n' // the organization of the contact
-            + 'TEL;type=CELL;type=VOICE;waid=556296638900:+55 21 99144-4452\n' // ID do WhatsApp + número de telefone
+            + 'TEL;type=CELL;type=VOICE;waid=556296638900:+55 21 8763-5924\n' // ID do WhatsApp + número de telefone
             + 'END:VCARD'
 /******END OF VCARD INPUT******/
 
@@ -130,7 +130,7 @@ async function starts() {
 
 			mess = {
 				wait: 'ta fazendo garai espera kkk',
-				success: 's� sucesso',
+				success: 'sucesso',
 				error: {
 					stick: 'n consegui fazer essa porra desculpa 😔',
 					Iv: ' Link inválido '
@@ -418,21 +418,19 @@ async function starts() {
 						reply(`manda imagem ou gif com a legenda ${prefix}fig`)
 					}
 					break
-                case 'ttp':
-					if (args.length < 1) return reply('cade o texto fdp')
-					ranp = getRandom('.png')
-					rano = getRandom('.webp')
-					teks = body.slice(9).trim()
-					anu = await fetchJson(`https://mhankbarbars.herokuapp.com/api/text2image?text=${teks}&apiKey=${apiKey}`, {method: 'get'})
-					if (anu.error) return reply(anu.error)
-					exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
-						fs.unlinkSync(ranp)
-						if (err) return reply(mess.error.stick)
-						buffer = fs.readFileSync(rano)
-						client.sendMessage(from, buffer, sticker, {quoted: mek})
-						fs.unlinkSync(rano)
-					})
+                case 'attp2':
+					if (args.length < 1) return reply(`* burro`)
+					teks = body.slice(6)
+					atytyd = await getBuffer(`https://api.vhtear.com/textxgif?text=${teks}&apikey=GratisssCokkk`)
+					client.sendMessage(from, atytyd, sticker, {quoted: mek})
+					await limitAdd(sender) 
 					break
+					
+			case 'attp':
+				if (args.length < 1) return reply(`ta errado burro`)
+				attp2 = await getBuffer(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(q)}`)
+				client.sendMessage(from, attp2, sticker, {quoted: mek})
+				break
 					case 'linkgrup':
 				case 'linkgc':
 				    client.updatePresence(from, Presence.composing) 
@@ -821,7 +819,7 @@ async function starts() {
 						mentions(teks, mentioned, true)
 						client.groupRemove(from, mentioned)
 					} else {
-						mentions(`Perintah di terima, mengeluarkan : @${mentioned[0].split('@')[0]}`, mentioned, true)
+						mentions(`putinha saindo pra j� : @${mentioned[0].split('@')[0]}`, mentioned, true)
 						client.groupRemove(from, mentioned)
 					}
 					break
