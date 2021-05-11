@@ -219,7 +219,7 @@ async function starts() {
 	
 			if (messagesC.includes("kito")){
 			client.updatePresence(from, Presence.composing)
-			reply("s� de falar o nome gozei")
+			reply("so de falar o nome gozei")
 	}
 //msc
 
@@ -418,6 +418,21 @@ async function starts() {
 						reply(`manda imagem ou gif com a legenda ${prefix}fig`)
 					}
 					break
+                case 'ttp':
+					if (args.length < 1) return reply('cade o texto fdp')
+					ranp = getRandom('.png')
+					rano = getRandom('.webp')
+					teks = body.slice(9).trim()
+					anu = await fetchJson(`https://mhankbarbars.herokuapp.com/api/text2image?text=${teks}&apiKey=${apiKey}`, {method: 'get'})
+					if (anu.error) return reply(anu.error)
+					exec(`wget ${anu.result} -O ${ranp} && ffmpeg -i ${ranp} -vcodec libwebp -filter:v fps=fps=20 -lossless 1 -loop 0 -preset default -an -vsync 0 -s 512:512 ${rano}`, (err) => {
+						fs.unlinkSync(ranp)
+						if (err) return reply(mess.error.stick)
+						buffer = fs.readFileSync(rano)
+						client.sendMessage(from, buffer, sticker, {quoted: mek})
+						fs.unlinkSync(rano)
+					})
+					break
 					case 'linkgrup':
 				case 'linkgc':
 				    client.updatePresence(from, Presence.composing) 
@@ -556,17 +571,24 @@ async function starts() {
 					}
 					mentions(teks, groupAdmins, true)
 					break
-				case 'ts':
-					if (args.length < 1) return client.sendMessage(from, 'Qual � o c�digo da linguagem, tio?', text, {quoted: mek})
+				case 'tts':
+				if (!isPublic) return reply(mess.only.public)
+					if (args.length < 1) return client.sendMessage(from, 'Kode bahasanya mana om?', text, {quoted: mek})
 					const gtts = require('./lib/gtts')(args[0])
-					if (args.length < 2) return client.sendMessage(from, 'Cad� o texto', text, {quoted: mek})
+					if (args.length < 2) return client.sendMessage(from, 'Textnya mana om', text, {quoted: mek})
 					dtt = body.slice(9)
 					ranm = getRandom('.mp3')
+					rano = getRandom('.ogg')
 					dtt.length > 600
-					? reply('texto � mto grande')
+					? reply('oq quer falar')
 					: gtts.save(ranm, dtt, function() {
-						client.sendMessage(from, fs.readFileSync(ranm), audio, {quoted: mek, mimetype: 'audio/mp4', ptt:true})
-						fs.unlinkSync(ranm)
+						exec(`ffmpeg -i ${ranm} -ar 48000 -vn -c:a libopus ${rano}`, (err) => {
+							fs.unlinkSync(ranm)
+							buff = fs.readFileSync(rano)
+							if (err) return reply('Gagal om:(')
+							client.sendMessage(from, buff, audio, {quoted: mek, ptt:true})
+							fs.unlinkSync(rano)
+						})
 					})
 					break
 				case 'meme':
