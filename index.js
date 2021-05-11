@@ -158,6 +158,7 @@ async function starts() {
 			const isWelkom = isGroup ? welkom.includes(from) : false
 			const isNsfw = isGroup ? nsfw.includes(from) : false
 			const isSimi = isGroup ? samih.includes(from) : false
+            const q = args.join(' ')
 			const isOwner = ownerNumber.includes(sender)
 			const isUrl = (url) => {
 			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
@@ -423,10 +424,9 @@ async function starts() {
 					teks = body.slice(6)
 					atytyd = await getBuffer(`https://api.vhtear.com/textxgif?text=${teks}&apikey=GratisssCokkk`)
 					client.sendMessage(from, atytyd, sticker, {quoted: mek})
-					await limitAdd(sender) 
 					break
 					
-			case 'attp':
+			   case 'attp':
 				if (args.length < 1) return reply(`ta errado burro`)
 				attp2 = await getBuffer(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(q)}`)
 				client.sendMessage(from, attp2, sticker, {quoted: mek})
