@@ -189,7 +189,7 @@ async function starts() {
 	
 			if (messagesC.includes("but")){
 			client.updatePresence(from, Presence.composing)
-			reply("� bot seu analfabeto")
+			reply("e bot seu analfabeto")
 	}
 	
 			if (messagesC.includes("cerolcorno")){
