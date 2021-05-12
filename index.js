@@ -20,7 +20,6 @@ const fetch = require('node-fetch')
 const ffmpeg = require('fluent-ffmpeg')
 const { removeBackgroundFromImageFile } = require('remove.bg')
 const lolis = require('lolis.life')
-const kagApi = require('@kagchi/kag-api')
 const loli = new lolis()
 const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
@@ -80,7 +79,7 @@ async function starts() {
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
-				teks = `ol� @${num.split('@')[0]}\nbem vindo ao grupo  se divirta`
+				teks = `ola @${num.split('@')[0]}\n bem vindo ao grupo, comando e /menu pe�a a tag para algum adm`
 				let buff = await getBuffer(ppimg)
 				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 			} else if (anu.action == 'remove') {
@@ -908,7 +907,7 @@ async function starts() {
 						reply('1 para ativar, 0 para desativar')
 					}
 					break
-				case 'welcome':
+				case 'bemvindo':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (args.length < 1) return reply('Hmmmm')
