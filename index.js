@@ -971,7 +971,7 @@ async function starts() {
 						console.log(muehe)
 						reply(muehe)
 					} else {
-						console.log(color('[ERROR]','red'), 'seu arrombado comando errado faz essa porra certa', color(sender.split('@')[0]))
+						console.log(color('[ERROR]','red'), 'nao e um comando', color(sender.split('@')[0]))
 					}
                            }
 		} catch (e) {
