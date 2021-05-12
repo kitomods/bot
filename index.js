@@ -20,6 +20,7 @@ const fetch = require('node-fetch')
 const ffmpeg = require('fluent-ffmpeg')
 const { removeBackgroundFromImageFile } = require('remove.bg')
 const lolis = require('lolis.life')
+const kagApi = require('@kagchi/kag-api')
 const loli = new lolis()
 const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
@@ -208,7 +209,7 @@ async function starts() {
 			reply("lisho e seu pai q te fez")
 	}
 	
-			if (messagesC.includes("vtmc")){
+			if (messagesC.includes("vtnc")){
 			client.updatePresence(from, Presence.composing)
 			reply("ovo comer seu cu em")
 	}
@@ -222,6 +223,16 @@ async function starts() {
 			client.updatePresence(from, Presence.composing)
 			reply("so de falar o nome gozei")
 	}
+	
+	        if (messagesC.includes("sam")){
+			client.updatePresence(from, Presence.composing)
+			reply("so de falar o nome gozei")
+	}
+	if (messagesC.includes("near")){
+			client.updatePresence(from, Presence.composing)
+			reply("aquele preto desgra�ado")
+	}
+	
 //msc
 
            if (messagesC.includes("culimpinho")){
@@ -404,6 +415,12 @@ async function starts() {
 						reply(`manda imagem ou gif com a legenda ${prefix}fig`)
 					}
 					break
+              case 'novonome':
+					if (args.length < 1) return
+					if (!isOwner) return reply(mess.only.ownerB)
+					name = body.slice(12)
+					reply(`O nome do bot foi alterado com sucesso para : ${name}`)
+					break
                case 'tts':
 					if (args.length < 1) return client.sendMessage(from, 'Qual � o c�digo da linguagem, tio?', text, {quoted: mek})
 					const gtts = require('./lib/gtts')(args[0])
@@ -494,7 +511,7 @@ async function starts() {
 					rate = body.slice(1)
 					const ti =['4','9','17','28','34','48','59','62','74','83','97','100','29','94','75','82','41','39']
 					const kl = ti[Math.floor(Math.random() * ti.length)]
-					client.sendMessage(from, 'vc e corno?'+rate+'*\n\n a porcentagem de chifrudo q vc � : '+ kl+'%', text, { quoted: mek })
+					client.sendMessage(from, 'vc e corno?'+rate+'*\n\n a porcentagem de chifrudo q vc e : '+ kl+'%', text, { quoted: mek })
 					break
 					case 'wame':
                   client.updatePresence(from, Presence.composing) 
@@ -736,7 +753,6 @@ async function starts() {
 					anu = await client.chats.all()
 					client.setMaxListeners(25)
 					for (let _ of anu) {
-						client.deleteChat(_.jid)
 					}
 					reply('agr o chat do bot ta sem atraso :)')
 					break
@@ -845,7 +861,7 @@ async function starts() {
                                         break
                                 case 'sair':
                     if (!isGroup) return reply(mess.only.group)
-                    if (!isGroupAdmins) return reply(mess.only.admin)
+                    if (!isOwner) return reply('so meu dono lindo faz isso')
                      setTimeout( () => {
 					client.groupLeave (from) 
 					}, 2000)
@@ -956,7 +972,7 @@ async function starts() {
 						console.log(muehe)
 						reply(muehe)
 					} else {
-						return //console.log(color('[WARN]','red'), 'Unregistered Command from', color(sender.split('@')[0]))
+						console.log(color('[ERROR]','red'), 'seu arrombado comando errado faz essa porra certa', color(sender.split('@')[0]))
 					}
                            }
 		} catch (e) {
