@@ -79,7 +79,7 @@ async function starts() {
 				} catch {
 					ppimg = 'https://i0.wp.com/www.gambarunik.id/wp-content/uploads/2019/06/Top-Gambar-Foto-Profil-Kosong-Lucu-Tergokil-.jpg'
 				}
-				teks = `ola @${num.split('@')[0]}\n bem vindo ao grupo, comando e /menu pe�a a tag para algum adm`
+				teks = `ola @${num.split('@')[0]}\n bem vindo ao grupo, comando e /menu peca a tag para algum adm`
 				let buff = await getBuffer(ppimg)
 				client.sendMessage(mdata.id, buff, MessageType.image, {caption: teks, contextInfo: {"mentionedJid": [num]}})
 			} else if (anu.action == 'remove') {
@@ -147,6 +147,7 @@ async function starts() {
 			const botNumber = client.user.jid
 			const ownerNumber = ["552187635924@s.whatsapp.net"] // replace this with your number
 			const isGroup = from.endsWith('@g.us')
+			const isAntiFake = isGroup ? antifake.includes(from) : false
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await client.groupMetadata(from) : ''
 			const groupName = isGroup ? groupMetadata.subject : ''
