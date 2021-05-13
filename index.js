@@ -189,6 +189,11 @@ async function starts() {
 			reply("por acaso eu sou vc agr?")
 	}
 	
+	         if (messagesC.includes("preto")){
+			client.updatePresence(from, Presence.composing)
+			reply("seu pai aquele arrombado kkkkkkkk")
+	}
+	
 			if (messagesC.includes("but")){
 			client.updatePresence(from, Presence.composing)
 			reply("e bot seu analfabeto")
@@ -201,7 +206,7 @@ async function starts() {
 	
 	        if (messagesC.includes("kitogostoso")){
 			client.updatePresence(from, Presence.composing)
-			reply("aiinnnn ele � mtooo bato uma pra ele todo dia")
+			reply("aiinnnn ele e mtooo bato uma pra ele todo dia")
 	}
 	
 		if (messagesC.includes("botlixo")){
@@ -230,7 +235,7 @@ async function starts() {
 	}
 	if (messagesC.includes("near")){
 			client.updatePresence(from, Presence.composing)
-			reply("aquele preto desgra�ado")
+			reply("aquele preto desgracado")
 	}
 	
 //msc
@@ -502,7 +507,7 @@ async function starts() {
 			client.sendMessage(from, buffer, image, {quoted: mek, caption: `${teks}`})
 			await limitAdd(sender)
 			break
-					case 'dono':
+					case 'criador':
                     client.sendMessage(from, {displayname: "Jeff", vcard: vcard}, MessageType.contact, { quoted: mek})
                     client.sendMessage(from, 'Ctt do meu dono ai, pfv n flode o chat',MessageType.text, { quoted: mek} )
                     break
@@ -908,6 +913,27 @@ async function starts() {
 						reply('1 para ativar, 0 para desativar')
 					}
 					break
+            case 'antifake':
+					try {
+					if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
+					if (args.length < 1) return reply('Hmmmm')
+					if (Number(args[0]) === 1) {
+						if (isAntiFake) return reply('Ja esta ativo')
+						antifake.push(from)
+						fs.writeFileSync('./src/antifake.json', JSON.stringify(antifake))
+						reply('Ativou com sucesso o recurso de antifake neste grupo')
+					} else if (Number(args[0]) === 0) {
+						antifake.splice(from, 1)
+						fs.writeFileSync('./src/antifake.json', JSON.stringify(antifake))
+						reply('Desativou com sucesso o recurso de antifake neste grupo')
+					} else {
+						reply('1 para ativar, 0 para desativar')
+					}
+					} catch {
+						reply('Deu erro, tente novamente :/')
+					}
+                break
 				case 'bemvindo':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
