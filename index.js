@@ -129,7 +129,7 @@ async function starts() {
 			const isCmd = body.startsWith(prefix)
 
 			mess = {
-				wait: 'ta fazendo garai espera kkk',
+				wait: 'esta fazendo aguarde um pouco e n flode',
 				success: 'sucesso',
 				error: {
 					stick: 'n consegui fazer essa porra desculpa 😔',
