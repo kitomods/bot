@@ -104,20 +104,20 @@ async function starts() {
 	    	blocked.push(i.replace('c.us','s.whatsapp.net'))
 	    }
 	})
-	if(antifake.includes(anu.jid)) {
+
+	client.on('group-participants-update', async (anu) => {
+
+if(antifake.includes(anu.jid)) {
 			if (anu.action == 'add'){
 				num = anu.participants[0]
 				if(!num.split('@')[0].startsWith(55)) {
-					client.sendMessage(mdata.id, 'compra um chip seu pobre, vem de ofc', MessageType.text)
+					client.sendMessage(mdata.id, 'numero fake seu ban esta pr�ximo', MessageType.text)
 					setTimeout(async function () {
 						client.groupRemove(mdata.id, [num])
 					}, 1000)
 				}
 			}
 		}
-
-	client.on('chat-update', async (mek) => {
-		try {
                         if (!mek.hasNewMessage) return
                         mek = JSON.parse(JSON.stringify(mek)).messages[0]
 			if (!mek.message) return
