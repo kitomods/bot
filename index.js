@@ -14,11 +14,11 @@ const antifake = JSON.parse(fs.readFileSync('./src/antifake.json'))
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson, fetchText } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
-const fs = require('fs')
 const moment = require('moment-timezone')
 const { exec } = require('child_process')
 const fetch = require('node-fetch')
 const ffmpeg = require('fluent-ffmpeg')
+const fs = require('fs')
 const { removeBackgroundFromImageFile } = require('remove.bg')
 const lolis = require('lolis.life')
 const loli = new lolis()
@@ -139,7 +139,6 @@ async function starts() {
 			const command = body.slice(1).trim().split(/ +/).shift().toLowerCase()
 			const args = body.trim().split(/ +/).slice(1)
 			const isCmd = body.startsWith(prefix)
-			const fs = require('fs')
 
 			mess = {
 				wait: 'esta fazendo aguarde um pouco e n flode',
@@ -173,11 +172,8 @@ async function starts() {
 			const isNsfw = isGroup ? nsfw.includes(from) : false
 			const isSimi = isGroup ? samih.includes(from) : false
             const q = args.join(' ')
-            const fs = require('fs')
 			const isOwner = ownerNumber.includes(sender)
-			const isUrl = (url) => {
-			    return url.match(new RegExp(/https?:\/\/(www\.)?[-a-zA-Z0-9@:%._+~#=]{1,256}\.[a-zA-Z0-9()]{1,6}\b([-a-zA-Z0-9()@:%_+.~#?&/=]*)/, 'gi'))
-			}
+			
 			const reply = (teks) => {
 				client.sendMessage(from, teks, text, {quoted:mek})
 			}
