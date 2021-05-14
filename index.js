@@ -961,21 +961,7 @@ if(antifake.includes(anu.jid)) {
 						reply('1 para ativar, 0 para desativar ')
 					}
                                       break
-				case 'wait':
-					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
-						reply(mess.wait)
-						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
-						media = await client.downloadMediaMessage(encmedia)
-						await wait(media).then(res => {
-							client.sendMessage(from, res.video, video, {quoted: mek, caption: res.teks.trim()})
-						}).catch(err => {
-							reply(err)
-						})
-					} else {
-						reply('precisa de foto eu n sei pq')
-					}
-					break
-					case 'fechargrupo':
+               case 'fechargrupo':
 					client.updatePresence(from, Presence.composing) 
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
@@ -1001,6 +987,20 @@ if(antifake.includes(anu.jid)) {
 					client.groupSettingChange (from, GroupSettingChange.messageSend, false)
 					client.sendMessage(from, open, text, {quoted: mek})
 					break
+				case 'wait':
+					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
+						reply(mess.wait)
+						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
+						media = await client.downloadMediaMessage(encmedia)
+						await wait(media).then(res => {
+							client.sendMessage(from, res.video, video, {quoted: mek, caption: res.teks.trim()})
+						}).catch(err => {
+							reply(err)
+						})
+					} else {
+						reply('precisa de foto eu n sei pq')
+					}
+					break
 				default:
 					if (isGroup && isSimi && budy != undefined) {
 						console.log(budy)
@@ -1011,7 +1011,7 @@ if(antifake.includes(anu.jid)) {
 						return //console.log(color('[WARN]','red'), 'Unregistered Command from', color(sender.split('@')[0]))
 					}
                            }
-                  {
+		} catch (e) {
 			console.log('Error : %s', color(e, 'red'))
 		}
 	})
