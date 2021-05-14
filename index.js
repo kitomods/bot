@@ -10,6 +10,7 @@ const { help } = require('./src/help')
 const { menuadm } = require('./src/menuadm')
 const { kitomenu } = require('./src/kitomenu')
 const { tabela } = require('./src/tabela')
+const antifake = JSON.parse(fs.readFileSync('./src/antifake.json'))
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
 const { fetchJson, fetchText } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
@@ -104,6 +105,17 @@ async function starts() {
 	    	blocked.push(i.replace('c.us','s.whatsapp.net'))
 	    }
 	})
+	if(antifake.includes(anu.jid)) {
+			if (anu.action == 'add'){
+				num = anu.participants[0]
+				if(!num.split('@')[0].startsWith(55)) {
+					client.sendMessage(mdata.id, 'compra um chip seu pobre, vem de ofc', MessageType.text)
+					setTimeout(async function () {
+						client.groupRemove(mdata.id, [num])
+					}, 1000)
+				}
+			}
+		}
 
 	client.on('chat-update', async (mek) => {
 		try {
