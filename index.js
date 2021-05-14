@@ -1002,13 +1002,16 @@ if(antifake.includes(anu.jid)) {
 					client.sendMessage(from, open, text, {quoted: mek})
 					break
 				default:
+					if (body.startsWith(`${prefix}${command}`)) {
+                  reply(`comando n existe fdp`)
+                  }
 					if (isGroup && isSimi && budy != undefined) {
 						console.log(budy)
 						muehe = await simih(budy)
 						console.log(muehe)
 						reply(muehe)
 					} else {
-						console.log(color('[ERROR]','red'), 'nao e um comando', color(sender.split('@')[0]))
+						console.log(color('[KITO]','red'), 'Comando nao registrado', color(sender.split('@')[0]))
 					}
                            }
 		} catch (e) {
