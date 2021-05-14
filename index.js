@@ -1002,15 +1002,18 @@ if(antifake.includes(anu.jid)) {
 					client.sendMessage(from, open, text, {quoted: mek})
 					break
 				default:
-					if (body.startsWith(`${prefix}${command}`)) {
-                  reply(`comando n existe fdp`)
-                  }
 					if (isGroup && isSimi && budy != undefined) {
 						console.log(budy)
 						muehe = await simih(budy)
 						console.log(muehe)
 						reply(muehe)
 					} else {
-						console.log(color('[KITO]','red'), 'Comando nao registrado', color(sender.split('@')[0]))
+						return //console.log(color('[WARN]','red'), 'Unregistered Command from', color(sender.split('@')[0]))
 					}
+                           }
+		} catch (e) {
+			console.log('Error : %s', color(e, 'red'))
+		}
+	})
+}
 starts()
