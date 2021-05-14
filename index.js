@@ -1013,10 +1013,4 @@ if(antifake.includes(anu.jid)) {
 					} else {
 						console.log(color('[KITO]','red'), 'Comando nao registrado', color(sender.split('@')[0]))
 					}
-                           }
-		}) (e) {
-			console.log('Error : %s', color(e, 'red'))
-		}
-	})
-}
 starts()
