@@ -1013,8 +1013,6 @@ if(antifake.includes(anu.jid)) {
 					} else {
 						console.log(color('[KITO]','red'), 'Comando n�o registrado', color(sender.split('@')[0]))
 					}
-                           }
-		}  
 		          ({
 			console.log('Error : %s', color(e, 'red'))
 		}
