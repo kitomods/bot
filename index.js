@@ -1002,20 +1002,39 @@ if(antifake.includes(anu.jid)) {
 					}
 					break
 				default:
+
 					if (body.startsWith(`${prefix}${command}`)) {
-                  reply(`comando n existe fdp`)
+
+                  reply(`Desculpe *${pushname2}*, Comando *${prefix}${command}* N�o listado dentro no *${prefix}menu*!`)
+
                   }
-					if (isGroup && isSimi && budy != undefined) {
+
+   				if (isGroup && isSimi && budy != undefined && body.startsWith(`${prefix}`)) {
+
 						console.log(budy)
+
 						muehe = await simih(budy)
+
 						console.log(muehe)
+
 						reply(muehe)
+
 					} else {
-						console.log(color('[KITO]','red'), 'Comando n�o registrado', color(sender.split('@')[0]))
+
+						console.log(color('[SUBSCRIBE Adi Official]','blue'), 'Pengirim', color(sender.split('@')[0]))
+
 					}
-		          ({
+
+                           }
+
+		} catch (e) {
+
 			console.log('Error : %s', color(e, 'red'))
+
 		}
+
 	})
+
 }
+
 starts()
