@@ -1015,7 +1015,7 @@ if(antifake.includes(anu.jid)) {
 					}
                            }
 		}  
-		          {
+		          ({
 			console.log('Error : %s', color(e, 'red'))
 		}
 	})
