@@ -6,7 +6,6 @@ const {
     GroupSettingChange
 } = require('@adiwajshing/baileys')
 const { color, bgcolor } = require('./lib/color')
-const antifake = JSON.parse(fs.readFileSync('./src/antifake.json'))
 const { help } = require('./src/help')
 const { menuadm } = require('./src/menuadm')
 const { kitomenu } = require('./src/kitomenu')
@@ -106,18 +105,6 @@ async function starts() {
 	})
 
 	client.on('group-participants-update', async (anu) => {
-
-if(antifake.includes(anu.jid)) {
-			if (anu.action == 'add'){
-				num = anu.participants[0]
-				if(!num.split('@')[0].startsWith(55)) {
-					client.sendMessage(mdata.id, 'numero fake seu ban esta pr�ximo', MessageType.text)
-					setTimeout(async function () {
-						client.groupRemove(mdata.id, [num])
-					}, 1000)
-				}
-			}
-		}
                         if (!mek.hasNewMessage) return
                         mek = JSON.parse(JSON.stringify(mek)).messages[0]
 			if (!mek.message) return
@@ -171,7 +158,6 @@ if(antifake.includes(anu.jid)) {
 			const isNsfw = isGroup ? nsfw.includes(from) : false
 			const isSimi = isGroup ? samih.includes(from) : false
             const q = args.join(' ')
-            const fs = require('fs')
 			const isOwner = ownerNumber.includes(sender)
 			
 			const reply = (teks) => {
@@ -923,27 +909,7 @@ if(antifake.includes(anu.jid)) {
 						reply('1 para ativar, 0 para desativar')
 					}
 					break
-            case 'antifake':
-					try {
-					if (!isGroup) return reply(mess.only.group)
-					if (!isGroupAdmins) return reply(mess.only.admin)
-					if (args.length < 1) return reply('Hmmmm')
-					if (Number(args[0]) === 1) {
-						if (isAntiFake) return reply('Ja esta ativo')
-						antifake.push(from)
-						fs.writeFileSync('./src/antifake.json', JSON.stringify(antifake))
-						reply('Ativou com sucesso o recurso de antifake neste grupo')
-					} else if (Number(args[0]) === 0) {
-						antifake.splice(from, 1)
-						fs.writeFileSync('./src/antifake.json', JSON.stringify(antifake))
-						reply('Desativou com sucesso o recurso de antifake neste grupo')
-					} else {
-						reply('1 para ativar, 0 para desativar')
-					}
-					} catch {
-						reply('Deu erro, tente novamente :/')
-					}
-                break
+            
 				case 'bemvindo':
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
@@ -1011,7 +977,7 @@ if(antifake.includes(anu.jid)) {
 						console.log(muehe)
 						reply(muehe)
 					} else {
-						console.log(color('[KITO]','blue'), 'Pengirim', color(sender.split('@')[0]))
+						console.log(color('[KITO]','red'), 'Pengirim', color(sender.split('@')[0]))
 					}
                            }
 		} catch (e) {
