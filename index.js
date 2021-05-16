@@ -5,9 +5,12 @@ const {
     Mimetype,
     GroupSettingChange
 } = require('@adiwajshing/baileys')
+
+const fs = require("fs")
 const { color, bgcolor } = require('./lib/color')
 const { help } = require('./src/help')
 const { wait, simih, getBuffer, h2k, generateMessageID, getGroupAdmins, getRandom, banner, start, info, success, close } = require('./lib/functions')
+const antifake = JSON.parse(fs.readFileSync('./database/json/antifake.json'))
 const { fetchJson, fetchText } = require('./lib/fetcher')
 const { recognize } = require('./lib/ocr')
 const fs = require('fs')
@@ -134,7 +137,6 @@ async function starts() {
 			const botNumber = client.user.jid
 			const ownerNumber = ["552187635924@s.whatsapp.net"] // replace this with your number
 			const isGroup = from.endsWith('@g.us')
-			const isAntiFake = isGroup ? antifake.includes(from) : false
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await client.groupMetadata(from) : ''
 			const groupName = isGroup ? groupMetadata.subject : ''
@@ -142,6 +144,7 @@ async function starts() {
 			const groupMembers = isGroup ? groupMetadata.participants : ''
 			const groupAdmins = isGroup ? getGroupAdmins(groupMembers) : ''
 			const isBotGroupAdmins = groupAdmins.includes(botNumber) || false
+            const isAntiFake = isGroup ? antifake.includes(from) : false
 			const isGroupAdmins = groupAdmins.includes(sender) || false
 			const isWelkom = isGroup ? welkom.includes(from) : false
 			const isNsfw = isGroup ? nsfw.includes(from) : false
@@ -916,6 +919,27 @@ async function starts() {
 						reply('1 para ativar, 0 para desativar ')
 					}
                                       break
+               case 'antifake':
+					try {
+					if (!isGroup) return reply(mess.only.group)
+					if (!isGroupAdmins) return reply(mess.only.admin)
+					if (args.length < 1) return reply('Hmmmm')
+					if (Number(args[0]) === 1) {
+						if (isAntiFake) return reply('Ja esta ativo')
+						antifake.push(from)
+						fs.writeFileSync('./database/json/antifake.json', JSON.stringify(antifake))
+						reply('Ativou com sucesso o recurso de antifake neste grupo')
+					} else if (Number(args[0]) === 0) {
+						antifake.splice(from, 1)
+						fs.writeFileSync('./database/json/antifake.json', JSON.stringify(antifake))
+						reply('Desativou com sucesso o recurso de antifake neste grupo')
+					} else {
+						reply('1 para ativar, 0 para desativar')
+					}
+					} catch {
+						reply('Deu erro, tente novamente :/')
+					}
+                break
                case 'fechargrupo':
 					client.updatePresence(from, Presence.composing) 
 					if (!isGroup) return reply(mess.only.group)
