@@ -968,16 +968,13 @@ async function starts() {
 					}
 					break
 				default:
-					if (body.startsWith(`${prefix}${command}`)) {
-                  reply(`Desculpe *${pushname2}*, Comando *${prefix}${command}* Não listado dentro no *${prefix}menu*!`)
-                  }
-   				if (isGroup && isSimi && budy != undefined && body.startsWith(`${prefix}`)) {
+					if (isGroup && isSimi && budy != undefined) {
 						console.log(budy)
 						muehe = await simih(budy)
 						console.log(muehe)
 						reply(muehe)
 					} else {
-						console.log(color('[KITO]','red'), 'Pengirim', color(sender.split('@')[0]))
+						return //console.log(color('[WARN]','red'), 'Unregistered Command from', color(sender.split('@')[0]))
 					}
                            }
 		} catch (e) {
@@ -985,5 +982,4 @@ async function starts() {
 		}
 	})
 }
-
 starts()
