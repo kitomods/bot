@@ -21,7 +21,7 @@ const loli = new lolis()
 const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
-prefix = '.'
+prefix = '/'
 blocked = []
 
 function kyun(seconds){
@@ -963,7 +963,7 @@ async function starts() {
 						console.log(muehe)
 						reply(muehe)
 					} else {
-						return //console.log(color('[WARN]','red'), 'Unregistered Command from', color(sender.split('@')[0]))
+						return console.log(color('[WARN]','red'), 'Unregistered Command from', color(sender.split('@')[0]))
 					}
                            }
 		} catch (e) {
