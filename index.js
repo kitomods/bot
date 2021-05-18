@@ -25,7 +25,6 @@ const loli = new lolis()
 const welkom = JSON.parse(fs.readFileSync('./src/welkom.json'))
 const nsfw = JSON.parse(fs.readFileSync('./src/nsfw.json'))
 const samih = JSON.parse(fs.readFileSync('./src/simi.json'))
-const isBanned = ban.includes(sender)
 prefix = '/'
 blocked = []
 
@@ -154,6 +153,7 @@ async function starts() {
 			const isSimi = isGroup ? samih.includes(from) : false
             const q = args.join(' ')
 			const isOwner = ownerNumber.includes(sender)
+			const isBanned = ban.includes(sender)
 			
 			const reply = (teks) => {
 				client.sendMessage(from, teks, text, {quoted:mek})
