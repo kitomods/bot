@@ -8,6 +8,7 @@ const kitomenu = (prefix) => {
  ├─ ❏ ${prefix}ban
  ├─ ❏ ${prefix}unban
  ├─ ❏ ${prefix}bc
+ ├─ ❏ ${prefix}novonome
  └─ ❏ ${prefix}novafoto
 `
 }
