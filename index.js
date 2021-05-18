@@ -387,7 +387,7 @@ async function starts() {
 					}
 					break
              case 'ban':
-					denz.updatePresence(from, Presence.composing) 
+					index.updatePresence(from, Presence.composing) 
 					if (args.length < 1) return
 					if (!isOwner) return reply(mess.only.ownerB)
 					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
@@ -406,7 +406,7 @@ async function starts() {
 						ben += `~> @${banned.split('@')[0]}\n`
 					}
 					ben += `Total : ${ban.length}`
-					denz.sendMessage(from, ben.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": ban}})
+					index.sendMessage(from, ben.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": ban}})
 					break
           case 'google':
           if (isBanned) return reply(mess.only.benned)
