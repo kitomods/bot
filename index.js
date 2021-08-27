@@ -449,14 +449,12 @@ async function starts() {
 					break
 					
 			   case 'attp':
-			
 				if (args.length < 1) return reply(`ta errado burro`)
 				attp2 = await getBuffer(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(q)}`)
 				client.sendMessage(from, attp2, sticker, {quoted: mek})
 				break
 					case 'link':
 				case 'linkgc':
-				
 				    client.updatePresence(from, Presence.composing) 
 				    if (!isGroup) return reply(mess.only.group)
                                      if (!isUser) return reply(mess.only.daftarB)
@@ -487,7 +485,6 @@ async function starts() {
                     client.sendMessage(from, buffer, sticker, { quoted: mek })
                     break
 					case 'pinterest':
-					
                     tels = body.slice(11)
 					client.updatePresence(from, Presence.composing) 
 					data = await fetchJson(`https://api.fdci.se/rep.php?gambar=${tels}`, {method: 'get'})
@@ -499,7 +496,6 @@ async function starts() {
                     await limitAdd(sender)
 					break
 					case 'happymod':
-					
 			data = await fetchJson(`https://tobz-api.herokuapp.com/api/happymod?q=${body.slice(10)}&apikey=${TobzApi}`)
 			hupo = data.result[0] 
 			teks = `*Nome*: ${data.result[0].title}\n*vers�o*: ${hupo.version}\n*Tamanho:* ${hupo.size}\n*root*: ${hupo.root}\n*compra*: ${hupo.price}\n*link*: ${hupo.link}\n*download*: ${hupo.download}`
@@ -512,7 +508,6 @@ async function starts() {
                     client.sendMessage(from, 'Ctt do meu dono ai, pfv n flode o chat',MessageType.text, { quoted: mek} )
                     break
                     case 'corno':		
-                    
 	            	if (args.length < 1) return reply('marque seus amigos!')
 					rate = body.slice(1)
 					const ti =['4','9','17','28','34','48','59','62','74','83','97','100','29','94','75','82','41','39']
@@ -520,7 +515,6 @@ async function starts() {
 					client.sendMessage(from, 'vc e corno?'+rate+'*\n\n a porcentagem de chifrudo q vc e : '+ kl+'%', text, { quoted: mek })
 					break
 					case 'wame':
-					
                   client.updatePresence(from, Presence.composing) 
                   options = {
                   text: `  LINK WHATSAPP  \n\n_Solicitado por_ :  @${sender.split("@s.whatsapp.net")[0]} \n\nSeu link WhatsApp:\n\n https://wa.me/${sender.split("@s.whatsapp.net")[0]} \n\n Ou \n\n https://api.whatsapp.com/send?phone=${sender.split("@")[0]} \n\n DARK DOMINA  `,
@@ -529,7 +523,6 @@ async function starts() {
                   client.sendMessage(from, options, text, { quoted: mek } )
 			      break
 			case 'playmp3':
-			
                 reply(mess.wait)
                 play = body.slice(9)
                 anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=${ZeksApi}`, {method: 'get'})
@@ -542,7 +535,6 @@ async function starts() {
                 await limitAdd(sender) 
                 break 
                 case 'wame':
-                
                   client.updatePresence(from, Presence.composing) 
                   options = {
                   text: `  LINK WHATSAPP  \n\n_Solicitado por_ :  @${sender.split("@s.whatsapp.net")[0]} \n\nSeu link WhatsApp:\n\n https://wa.me/${sender.split("@s.whatsapp.net")[0]} \n\n Ou \n\n https://api.whatsapp.com/send?phone=${sender.split("@")[0]} \n`,
@@ -551,7 +543,6 @@ async function starts() {
                   client.sendMessage(from, options, text, { quoted: mek } )
 			      break
 					case 'playstore':
-					
                 ps = `${body.slice(11)}`
                   anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/playstore?q=${ps}`, {method: 'get'})
                   store = '======================\n'
@@ -561,7 +552,6 @@ async function starts() {
                   reply(store.trim())
                   break
                   case 'porno':
-                  
 				    if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					memein = await kagApi.memeindo()
@@ -591,7 +581,6 @@ async function starts() {
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'k'})
 					break
 					case 'admins':
-					
 					client.updatePresence(from, Presence.composing) 
 					if (!isGroup) return reply(mess.only.group)
 					teks = `Lista admin do grupo*${groupMetadata.subject}*\nTotal : ${groupAdmins.length}\n\n`
@@ -603,7 +592,6 @@ async function starts() {
 					mentions(teks, groupAdmins, true)
 					break
 				case 'tts':
-				
 				if (!isPublic) return reply(mess.only.public)
 					if (args.length < 1) return client.sendMessage(from, 'Kode bahasanya mana om?', text, {quoted: mek})
 					if (args.length < 2) return client.sendMessage(from, 'Textnya mana om', text, {quoted: mek})
@@ -623,7 +611,6 @@ async function starts() {
 					})
 					break
 				case 'meme':
-				
 					meme = await fetchJson('https//kagchi-api.glitch.me/meme/memes', { method: 'get' })
 					buffer = await getBuffer(`https://imgur.com/${meme.hash}.jpg`)
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: '.......'})
@@ -649,7 +636,6 @@ async function starts() {
 					reply('Obrigado pelo novo perfil😗')
 					break
 				case 'loli':
-				
 					loli.getSFWLoli(async (err, res) => {
 						if (err) return reply('❌ *ERROR* ❌')
 						buffer = await getBuffer(res.url)
@@ -657,7 +643,6 @@ async function starts() {
 					})
 					break
 				case 'nsfwloli':
-				
 					if (!isNsfw) return reply('❌ *FALSE* ❌')
 					loli.getNSFWLoli(async (err, res) => {
 						if (err) return reply('❌ *ERROR* ❌')
@@ -666,13 +651,11 @@ async function starts() {
 					})
 					break
 				case 'hilih':
-				
 					if (args.length < 1) return reply('Teksnya mana um?')
 					anu = await fetchJson(`https://mhankbarbars.herokuapp.com/api/hilih?teks=${body.slice(7)}`, {method: 'get'})
 					reply(anu.result)
 					break
 				case 'ytmp3':
-				
 					if (args.length < 1) return reply('Urlnya mana um?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
 					anu = await fetchJson(`https://mhankbarbar.tech/api/yta?url=${args[0]}&apiKey=${apiKey}`, {method: 'get'})
@@ -684,7 +667,6 @@ async function starts() {
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
 					break
 				case 'ytsearch':
-				
 					if (args.length < 1) return reply('O que voc� est� procurando? pau?')
 					anu = await fetchJson(`https://mhankbarbar.tech/api/ytsearch?q=${body.slice(10)}&apiKey=${apiKey}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
@@ -696,7 +678,6 @@ async function starts() {
 					break
 				case 'nulis':
 				case 'tulis':
-				
 					if (args.length < 1) return reply('O que voc� quer escrever? ')
 					teks = body.slice(7)
 					reply(mess.wait)
@@ -706,7 +687,6 @@ async function starts() {
 					client.sendMessage(from, buff, image, {quoted: mek, caption: mess.success})
 					break
 				case 'url2img':
-				
 					tipelist = ['desktop','tablet','mobile']
 					if (args.length < 1) return reply('Qual � o tipo hum?')
 					if (!tipelist.includes(args[0])) return reply('Tipe desktop|tablet|mobile')
@@ -720,7 +700,6 @@ async function starts() {
 					break
 				case 'tstiker':
 				case 'tsticker':
-				
 					if (args.length < 1) return reply('Onde est� o texto hum?')
 					ranp = getRandom('.png')
 					rano = getRandom('.webp')
@@ -735,7 +714,6 @@ async function starts() {
 					})
 					break
 				case 'marcar':
-				
 				client.updatePresence(from, Presence.composing) 
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
@@ -748,8 +726,7 @@ async function starts() {
 					}
 					mentions('╔══✪〘 Mencionando Todos 〙✪══\n╠➥'+teks+'╚═〘 RUDE-BOT 〙', members_id, true)
 					break
-                                case 'marcaratk':
-                                
+                 case 'marcaratk':
 				client.updatePresence(from, Presence.composing) 
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
