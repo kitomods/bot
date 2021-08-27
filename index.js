@@ -136,7 +136,7 @@ async function starts() {
 			}
 
 			const botNumber = client.user.jid
-			const ownerNumber = ["552187635924@s.whatsapp.net"] // replace this with your number
+			const ownerNumber = ["5528999306363@s.whatsapp.net"] // replace this with your number
 			const isGroup = from.endsWith('@g.us')
 			const sender = isGroup ? mek.participant : mek.key.remoteJid
 			const groupMetadata = isGroup ? await client.groupMetadata(from) : ''
@@ -262,7 +262,6 @@ async function starts() {
 					client.sendMessage(from, buffer, image, {caption: teks, contextInfo:{mentionedJid: [me.jid]}})
 					break
 				case 'blocklist':
-				
 					teks = 'Esta � a lista de n�meros bloqueados :\n'
 					for (let block of blocked) {
 						teks += `~> @${block.split('@')[0]}\n`
@@ -271,7 +270,6 @@ async function starts() {
 					client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": blocked}})
 					break
 					case 'play':
-					
                 reply(mess.wait)
                 play = body.slice(5)
                 anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=apivinz`)
@@ -285,7 +283,6 @@ async function starts() {
                 break
 				case 'fig':
 				case 'sticker':
-				
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						const media = await client.downloadAndSaveMediaMessage(encmedia)
@@ -378,30 +375,7 @@ async function starts() {
 						reply(`manda imagem ou gif com a legenda ${prefix}fig`)
 					}
 					break
-             case 'ban':
-					index.updatePresence(from, Presence.composing) 
-					if (args.length < 1) return
-					if (!isOwner) return reply(mess.only.ownerB)
-					mentioned = mek.message.extendedTextMessage.contextInfo.mentionedJid
-			        ban = mentioned
-					reply(`banido com sucesso : ${ban}`)
-					break
-           case 'unban':
-					if (!isOwner)return reply(mess.only.ownerB)
-					bnnd = body.slice(8)
-					ban.splice(`${bnnd}@s.whatsapp.net`, 1)
-					reply(`N�mero wa.me/${bnnd} foi desbanido!`)
-					break
-        case 'banlist':
-				ben = '```Lista banida``` :\n'
-					for (let banned of ban) {
-						ben += `~> @${banned.split('@')[0]}\n`
-					}
-					ben += `Total : ${ban.length}`
-					index.sendMessage(from, ben.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": ban}})
-					break
-          case 'google':
-          
+          case 'google':      
                 const googleQuery = body.slice(8)
                 if(googleQuery == undefined || googleQuery == ' ') return reply(`*Hasil Pencarian : ${googleQuery}* tidak ditemukan`)
                 google({ 'query': googleQuery }).then(results => {
@@ -447,7 +421,6 @@ async function starts() {
 					atytyd = await getBuffer(`https://api.vhtear.com/textxgif?text=${teks}&apikey=GratisssCokkk`)
 					client.sendMessage(from, atytyd, sticker, {quoted: mek})
 					break
-					
 			   case 'attp':
 				if (args.length < 1) return reply(`ta errado burro`)
 				attp2 = await getBuffer(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(q)}`)
