@@ -241,19 +241,6 @@ async function starts() {
 			if (isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;32mEXEC\x1b[1;37m]', time, color(command), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			switch(command) {
-				case 'help':
-				case 'menu'
-					client.sendMessage(from, help(prefix), text)
-					break
-					case 'kitomenu':
-					client.sendMessage(from, kitomenu(prefix), text)
-					break
-					case 'menuadm':
-					client.sendMessage(from, menuadm(prefix), text)
-					break
-					case 'tabela':
-					client.sendMessage(from, tabela(prefix), text)
-					break
 				case 'info':
 					me = client.user
 					uptime = process.uptime()
@@ -374,6 +361,18 @@ async function starts() {
 					} else {
 						reply(`manda imagem ou gif com a legenda ${prefix}fig`)
 					}
+					break
+				case 'menu':
+					client.sendMessage(from, help(prefix), text)
+					break
+					case 'kitomenu':
+					client.sendMessage(from, kitomenu(prefix), text)
+					break
+					case 'menuadm':
+					client.sendMessage(from, menuadm(prefix), text)
+					break
+					case 'tabela':
+					client.sendMessage(from, tabela(prefix), text)
 					break
           case 'google':      
                 const googleQuery = body.slice(8)
