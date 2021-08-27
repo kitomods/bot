@@ -132,7 +132,6 @@ async function starts() {
 					ownerB: 'isso ai aquele gostoso do kito faz kakakakakak',
 					admin: 'o membro comum desgraçado, só adm faz esse carai lkkkkk',
 					Badmin: 'só quando eu me torna adm faço saporra kkkkkkkk'
-                    benned: 'vc foi proibido de usar o bot entre em contato com o dono',
 				}
 			}
 
@@ -168,11 +167,6 @@ async function starts() {
 			if (messagesC.includes("fdp")){
 			client.updatePresence(from, Presence.composing)
 			reply("teu pai")
-	}
-	
-		if (messagesC.includes("blackpreto")){
-			client.updatePresence(from, Presence.composing)
-			reply("ele  limdo igual um carvao")
 	}
 	
 			if (messagesC.includes("lixo")){
@@ -248,8 +242,7 @@ async function starts() {
 			if (!isCmd && isGroup) console.log('\x1b[1;31m~\x1b[1;37m>', '[\x1b[1;31mRECV\x1b[1;37m]', time, color('Message'), 'from', color(sender.split('@')[0]), 'in', color(groupName), 'args :', color(args.length))
 			switch(command) {
 				case 'help':
-				case 'menu':
-				if (isBanned) return reply(mess.only.benned)
+				case 'menu'
 					client.sendMessage(from, help(prefix), text)
 					break
 					case 'kitomenu':
@@ -262,7 +255,6 @@ async function starts() {
 					client.sendMessage(from, tabela(prefix), text)
 					break
 				case 'info':
-				if (isBanned) return reply(mess.only.benned)
 					me = client.user
 					uptime = process.uptime()
 					teks = `nome do bot : ${me.name}\nnumero do bot : @${me.jid.split('@')[0]}\nprefix: ${prefix}\ntotal de bloqueados  : ${blocked.length}\nO bot est� ativo em : ${kyun(uptime)}`
@@ -270,7 +262,7 @@ async function starts() {
 					client.sendMessage(from, buffer, image, {caption: teks, contextInfo:{mentionedJid: [me.jid]}})
 					break
 				case 'blocklist':
-				if (isBanned) return reply(mess.only.benned)
+				
 					teks = 'Esta � a lista de n�meros bloqueados :\n'
 					for (let block of blocked) {
 						teks += `~> @${block.split('@')[0]}\n`
@@ -279,7 +271,7 @@ async function starts() {
 					client.sendMessage(from, teks.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": blocked}})
 					break
 					case 'play':
-					if (isBanned) return reply(mess.only.benned)
+					
                 reply(mess.wait)
                 play = body.slice(5)
                 anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=apivinz`)
@@ -293,7 +285,7 @@ async function starts() {
                 break
 				case 'fig':
 				case 'sticker':
-				if (isBanned) return reply(mess.only.benned)
+				
 					if ((isMedia && !mek.message.videoMessage || isQuotedImage) && args.length == 0) {
 						const encmedia = isQuotedImage ? JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo : mek
 						const media = await client.downloadAndSaveMediaMessage(encmedia)
@@ -409,7 +401,7 @@ async function starts() {
 					index.sendMessage(from, ben.trim(), extendedText, {quoted: mek, contextInfo: {"mentionedJid": ban}})
 					break
           case 'google':
-          if (isBanned) return reply(mess.only.benned)
+          
                 const googleQuery = body.slice(8)
                 if(googleQuery == undefined || googleQuery == ' ') return reply(`*Hasil Pencarian : ${googleQuery}* tidak ditemukan`)
                 google({ 'query': googleQuery }).then(results => {
@@ -457,14 +449,14 @@ async function starts() {
 					break
 					
 			   case 'attp':
-			if (isBanned) return reply(mess.only.benned)
+			
 				if (args.length < 1) return reply(`ta errado burro`)
 				attp2 = await getBuffer(`https://api.xteam.xyz/attp?file&text=${encodeURIComponent(q)}`)
 				client.sendMessage(from, attp2, sticker, {quoted: mek})
 				break
 					case 'link':
 				case 'linkgc':
-				if (isBanned) return reply(mess.only.benned)
+				
 				    client.updatePresence(from, Presence.composing) 
 				    if (!isGroup) return reply(mess.only.group)
                                      if (!isUser) return reply(mess.only.daftarB)
@@ -495,7 +487,7 @@ async function starts() {
                     client.sendMessage(from, buffer, sticker, { quoted: mek })
                     break
 					case 'pinterest':
-					if (isBanned) return reply(mess.only.benned)
+					
                     tels = body.slice(11)
 					client.updatePresence(from, Presence.composing) 
 					data = await fetchJson(`https://api.fdci.se/rep.php?gambar=${tels}`, {method: 'get'})
@@ -507,7 +499,7 @@ async function starts() {
                     await limitAdd(sender)
 					break
 					case 'happymod':
-					if (isBanned) return reply(mess.only.benned)
+					
 			data = await fetchJson(`https://tobz-api.herokuapp.com/api/happymod?q=${body.slice(10)}&apikey=${TobzApi}`)
 			hupo = data.result[0] 
 			teks = `*Nome*: ${data.result[0].title}\n*vers�o*: ${hupo.version}\n*Tamanho:* ${hupo.size}\n*root*: ${hupo.root}\n*compra*: ${hupo.price}\n*link*: ${hupo.link}\n*download*: ${hupo.download}`
@@ -520,7 +512,7 @@ async function starts() {
                     client.sendMessage(from, 'Ctt do meu dono ai, pfv n flode o chat',MessageType.text, { quoted: mek} )
                     break
                     case 'corno':		
-                    if (isBanned) return reply(mess.only.benned)
+                    
 	            	if (args.length < 1) return reply('marque seus amigos!')
 					rate = body.slice(1)
 					const ti =['4','9','17','28','34','48','59','62','74','83','97','100','29','94','75','82','41','39']
@@ -528,7 +520,7 @@ async function starts() {
 					client.sendMessage(from, 'vc e corno?'+rate+'*\n\n a porcentagem de chifrudo q vc e : '+ kl+'%', text, { quoted: mek })
 					break
 					case 'wame':
-					if (isBanned) return reply(mess.only.benned)
+					
                   client.updatePresence(from, Presence.composing) 
                   options = {
                   text: `  LINK WHATSAPP  \n\n_Solicitado por_ :  @${sender.split("@s.whatsapp.net")[0]} \n\nSeu link WhatsApp:\n\n https://wa.me/${sender.split("@s.whatsapp.net")[0]} \n\n Ou \n\n https://api.whatsapp.com/send?phone=${sender.split("@")[0]} \n\n DARK DOMINA  `,
@@ -537,7 +529,7 @@ async function starts() {
                   client.sendMessage(from, options, text, { quoted: mek } )
 			      break
 			case 'playmp3':
-			if (isBanned) return reply(mess.only.benned)
+			
                 reply(mess.wait)
                 play = body.slice(9)
                 anu = await fetchJson(`https://api.zeks.xyz/api/ytplaymp3?q=${play}&apikey=${ZeksApi}`, {method: 'get'})
@@ -550,7 +542,7 @@ async function starts() {
                 await limitAdd(sender) 
                 break 
                 case 'wame':
-                if (isBanned) return reply(mess.only.benned)
+                
                   client.updatePresence(from, Presence.composing) 
                   options = {
                   text: `  LINK WHATSAPP  \n\n_Solicitado por_ :  @${sender.split("@s.whatsapp.net")[0]} \n\nSeu link WhatsApp:\n\n https://wa.me/${sender.split("@s.whatsapp.net")[0]} \n\n Ou \n\n https://api.whatsapp.com/send?phone=${sender.split("@")[0]} \n`,
@@ -559,7 +551,7 @@ async function starts() {
                   client.sendMessage(from, options, text, { quoted: mek } )
 			      break
 					case 'playstore':
-					if (isBanned) return reply(mess.only.benned)
+					
                 ps = `${body.slice(11)}`
                   anu = await fetchJson(`https://docs-jojo.herokuapp.com/api/playstore?q=${ps}`, {method: 'get'})
                   store = '======================\n'
@@ -569,7 +561,7 @@ async function starts() {
                   reply(store.trim())
                   break
                   case 'porno':
-                  if (isBanned) return reply(mess.only.benned)
+                  
 				    if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					memein = await kagApi.memeindo()
@@ -599,7 +591,7 @@ async function starts() {
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: 'k'})
 					break
 					case 'admins':
-					if (isBanned) return reply(mess.only.benned)
+					
 					client.updatePresence(from, Presence.composing) 
 					if (!isGroup) return reply(mess.only.group)
 					teks = `Lista admin do grupo*${groupMetadata.subject}*\nTotal : ${groupAdmins.length}\n\n`
@@ -611,7 +603,7 @@ async function starts() {
 					mentions(teks, groupAdmins, true)
 					break
 				case 'tts':
-				if (isBanned) return reply(mess.only.benned)
+				
 				if (!isPublic) return reply(mess.only.public)
 					if (args.length < 1) return client.sendMessage(from, 'Kode bahasanya mana om?', text, {quoted: mek})
 					if (args.length < 2) return client.sendMessage(from, 'Textnya mana om', text, {quoted: mek})
@@ -631,7 +623,7 @@ async function starts() {
 					})
 					break
 				case 'meme':
-				if (isBanned) return reply(mess.only.benned)
+				
 					meme = await fetchJson('https//kagchi-api.glitch.me/meme/memes', { method: 'get' })
 					buffer = await getBuffer(`https://imgur.com/${meme.hash}.jpg`)
 					client.sendMessage(from, buffer, image, {quoted: mek, caption: '.......'})
@@ -657,7 +649,7 @@ async function starts() {
 					reply('Obrigado pelo novo perfil😗')
 					break
 				case 'loli':
-				if (isBanned) return reply(mess.only.benned)
+				
 					loli.getSFWLoli(async (err, res) => {
 						if (err) return reply('❌ *ERROR* ❌')
 						buffer = await getBuffer(res.url)
@@ -665,7 +657,7 @@ async function starts() {
 					})
 					break
 				case 'nsfwloli':
-				if (isBanned) return reply(mess.only.benned)
+				
 					if (!isNsfw) return reply('❌ *FALSE* ❌')
 					loli.getNSFWLoli(async (err, res) => {
 						if (err) return reply('❌ *ERROR* ❌')
@@ -674,13 +666,13 @@ async function starts() {
 					})
 					break
 				case 'hilih':
-				if (isBanned) return reply(mess.only.benned)
+				
 					if (args.length < 1) return reply('Teksnya mana um?')
 					anu = await fetchJson(`https://mhankbarbars.herokuapp.com/api/hilih?teks=${body.slice(7)}`, {method: 'get'})
 					reply(anu.result)
 					break
 				case 'ytmp3':
-				if (isBanned) return reply(mess.only.benned)
+				
 					if (args.length < 1) return reply('Urlnya mana um?')
 					if(!isUrl(args[0]) && !args[0].includes('youtu')) return reply(mess.error.Iv)
 					anu = await fetchJson(`https://mhankbarbar.tech/api/yta?url=${args[0]}&apiKey=${apiKey}`, {method: 'get'})
@@ -692,7 +684,7 @@ async function starts() {
 					client.sendMessage(from, buffer, audio, {mimetype: 'audio/mp4', filename: `${anu.title}.mp3`, quoted: mek})
 					break
 				case 'ytsearch':
-				if (isBanned) return reply(mess.only.benned)
+				
 					if (args.length < 1) return reply('O que voc� est� procurando? pau?')
 					anu = await fetchJson(`https://mhankbarbar.tech/api/ytsearch?q=${body.slice(10)}&apiKey=${apiKey}`, {method: 'get'})
 					if (anu.error) return reply(anu.error)
@@ -704,7 +696,7 @@ async function starts() {
 					break
 				case 'nulis':
 				case 'tulis':
-				if (isBanned) return reply(mess.only.benned)
+				
 					if (args.length < 1) return reply('O que voc� quer escrever? ')
 					teks = body.slice(7)
 					reply(mess.wait)
@@ -714,7 +706,7 @@ async function starts() {
 					client.sendMessage(from, buff, image, {quoted: mek, caption: mess.success})
 					break
 				case 'url2img':
-				if (isBanned) return reply(mess.only.benned)
+				
 					tipelist = ['desktop','tablet','mobile']
 					if (args.length < 1) return reply('Qual � o tipo hum?')
 					if (!tipelist.includes(args[0])) return reply('Tipe desktop|tablet|mobile')
@@ -728,7 +720,7 @@ async function starts() {
 					break
 				case 'tstiker':
 				case 'tsticker':
-				if (isBanned) return reply(mess.only.benned)
+				
 					if (args.length < 1) return reply('Onde est� o texto hum?')
 					ranp = getRandom('.png')
 					rano = getRandom('.webp')
@@ -743,7 +735,7 @@ async function starts() {
 					})
 					break
 				case 'marcar':
-				if (isBanned) return reply(mess.only.benned)
+				
 				client.updatePresence(from, Presence.composing) 
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
@@ -757,7 +749,7 @@ async function starts() {
 					mentions('╔══✪〘 Mencionando Todos 〙✪══\n╠➥'+teks+'╚═〘 RUDE-BOT 〙', members_id, true)
 					break
                                 case 'marcaratk':
-                                if (isBanned) return reply(mess.only.benned)
+                                
 				client.updatePresence(from, Presence.composing) 
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
@@ -807,7 +799,6 @@ async function starts() {
 					}
 					break
                                 case 'promover':
-                                if (isBanned) return reply(mess.only.benned)
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -826,7 +817,6 @@ async function starts() {
 					}
 					break
 				case 'rebaixar':
-				if (isBanned) return reply(mess.only.benned)
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -845,7 +835,6 @@ async function starts() {
 					}
 					break
 				case 'add':
-				if (isBanned) return reply(mess.only.benned)
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -860,7 +849,7 @@ async function starts() {
 					}
 					break
 				case 'kick':
-				if (isBanned) return reply(mess.only.benned)
+				
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -879,7 +868,6 @@ async function starts() {
 					}
 					break
 				case 'listadmins':
-				if (isBanned) return reply(mess.only.benned)
 					if (!isGroup) return reply(mess.only.group)
 					teks = `lista dos gostosos dos adm  *${groupMetadata.subject}*\nTotal : ${groupAdmins.length}\n\n`
 					no = 0
@@ -890,7 +878,7 @@ async function starts() {
 					mentions(teks, groupAdmins, true)
 					break
                                 case 'linkgroup':
-                                if (isBanned) return reply(mess.only.benned)
+                                
                                         if (!isGroup) return reply(mess.only.group)
                                         if (!isGroupAdmins) return reply(mess.only.admin)
                                         if (!isBotGroupAdmins) return reply(mess.only.Badmin)
@@ -909,7 +897,7 @@ async function starts() {
 					}, 0)
                      break
 				case 'toimg':
-				if (isBanned) return reply(mess.only.benned)
+				
 					if (!isQuotedSticker) return reply('marque uma figurinha ')
 					reply(mess.wait)
 					encmedia = JSON.parse(JSON.stringify(mek).replace('quotedM','m')).message.extendedTextMessage.contextInfo
@@ -949,7 +937,6 @@ async function starts() {
 					break
             
 				case 'bemvindo':
-				if (isBanned) return reply(mess.only.benned)
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
 					if (args.length < 1) return reply('Hmmmm')
@@ -988,7 +975,6 @@ async function starts() {
 					}
                 break
                case 'fechargrupo':
-               if (isBanned) return reply(mess.only.benned)
 					client.updatePresence(from, Presence.composing) 
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
@@ -1002,7 +988,6 @@ async function starts() {
 					reply(close)
 					break
 					case 'abrirgrupo':
-                if (isBanned) return reply(mess.only.benned)
 					client.updatePresence(from, Presence.composing) 
 					if (!isGroup) return reply(mess.only.group)
 					if (!isGroupAdmins) return reply(mess.only.admin)
